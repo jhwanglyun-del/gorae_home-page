@@ -1,0 +1,198 @@
+/* 수제햄 고래부대찌개 CSS Design System */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap');
+
+:root {
+  --font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  /* Warm Color Palette */
+  --bg-primary: #FAF6F0;
+  --bg-surface: #FFFFFF;
+  --bg-surface-warm: #F4ECE1;
+  --bg-card: #FFFFFF;
+  
+  --text-primary: #2C221E;
+  --text-secondary: #665A54;
+  --text-muted: #9E928A;
+  --text-light: #FAF6F0;
+  
+  --brand-primary: #B83A24;
+  --brand-primary-hover: #9E2F1B;
+  --brand-secondary: #D97706;
+  --brand-accent: #E06D53;
+  --brand-dark: #4A170F;
+  --brand-light: #FDF1ED;
+  
+  --border-light: #EBE3D7;
+  --border-medium: #D6C9B8;
+  
+  --shadow-sm: 0 2px 8px rgba(74, 23, 15, 0.05);
+  --shadow-md: 0 6px 18px rgba(74, 23, 15, 0.08);
+  --shadow-lg: 0 12px 30px rgba(74, 23, 15, 0.12);
+  
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+  
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  font-family: var(--font-family);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: var(--font-family);
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input, select, textarea {
+  font-family: var(--font-family);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-surface-warm);
+}
+::-webkit-scrollbar-thumb {
+  background: #CBBCA9;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-accent);
+}
+
+/* Utility Layout Classes */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.825rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+}
+
+.badge-primary {
+  background-color: var(--brand-light);
+  color: var(--brand-primary);
+  border: 1px solid rgba(184, 58, 36, 0.2);
+}
+
+.badge-gold {
+  background-color: #FEF3C7;
+  color: #B45309;
+}
+
+.badge-purple {
+  background-color: #F3E8FF;
+  color: #6B21A8;
+}
+
+.badge-blue {
+  background-color: #E0F2FE;
+  color: #0369A1;
+}
+
+.badge-green {
+  background-color: #DCFCE7;
+  color: #15803D;
+}
+
+/* Glassmorphism & Card Styles */
+.card {
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.btn-primary {
+  background-color: var(--brand-primary);
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(184, 58, 36, 0.25);
+}
+
+.btn-primary:hover {
+  background-color: var(--brand-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(184, 58, 36, 0.35);
+}
+
+.btn-outline {
+  border: 1px solid var(--border-medium);
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+}
+
+.btn-outline:hover {
+  border-color: var(--brand-primary);
+  color: var(--brand-primary);
+  background-color: var(--brand-light);
+}
+
+.btn-dark {
+  background-color: var(--brand-dark);
+  color: #FFFFFF;
+}
+
+.btn-dark:hover {
+  background-color: #2F0E0A;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
