@@ -1,28 +1,70 @@
 import React, { useState } from 'react';
-import { X, Lock, Mail, User, Phone, CheckCircle2, ShieldCheck } from 'lucide-react';
+import { X, Lock, Mail, User, Phone, CheckCircle2, ShieldCheck, AlertCircle } from 'lucide-react';
+import { supabase } from '../lib/supabase';
 
-export default function AuthModal({ isOpen, onClose, initialTab = 'login' }) {
+export default function AuthModal({ isOpen, onClose, onNavigate, initialTab = 'login' }) {
   const [tab, setTab] = useState(initialTab); // 'login' | 'signup'
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
+  const [errorMsg, setErrorMsg] = useState('');
+  const [loading, setLoading] = useState(false);
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (tab === 'login') {
-      setMessage(`[Supabase 준비 완료] '${email}' 계정으로 로그인 요청이 완료되었습니다.`);
-    } else {
-      setMessage(`[Supabase 준비 완료] '${name}' 님, 성공적으로 회원가입 신청이 되었습니다!`);
+  const handleSelectSignupTab = () => {
+    onClose();
+    if (onNavigate) {
+      onNavigate('/signup');
     }
-    setTimeout(() => {
-      setMessage('');
-      onClose();
-    }, 2000);
   };
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setMessage('');
+    setErrorMsg('');
+    setLoading(true);
+
+    try {
+      if (tab === 'login') {
+        const { data, error } = await supabase.auth.signInWithPassword({
+          email,
+          password,
+        });
+        if (error) throw error;
+        setMessage(`'${data.user?.email || email}' 님 환영합니다! 로그인되었습니다.`);
+        setTimeout(() => {
+          setMessage('');
+          onClose();
+        }, 1500);
+      } else {
+        const { error } = await supabase.auth.signUp({
+          email,
+          password,
+          options: {
+            data: {
+              full_name: name,
+              phone: phone
+            }
+          }
+        });
+        if (error) throw error;
+        setMessage(`'${name}' 님, Supabase 회원가입이 성공적으로 완료되었습니다!`);
+        setTimeout(() => {
+          setMessage('');
+          onClose();
+        }, 2000);
+      }
+    } catch (err) {
+      setErrorMsg(err.message || '인증 처리 중 오류가 발생했습니다.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
 
   return (
     <div style={{
@@ -59,7 +101,11 @@ export default function AuthModal({ isOpen, onClose, initialTab = 'login' }) {
           justifyContent: 'space-between'
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <span style={{ fontSize: '1.25rem' }}>🐋</span>
+            <div style={{ width: '38px', height: '38px', backgroundColor: '#FFFFFF', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2px' }}>
+              <img src="/images/logo.png" alt="로고" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+            </div>
+
+
             <h3 style={{ fontSize: '1.15rem', fontWeight: 700 }}>수제햄 고래부대찌개</h3>
           </div>
           <button 
@@ -92,7 +138,7 @@ export default function AuthModal({ isOpen, onClose, initialTab = 'login' }) {
             로그인
           </button>
           <button
-            onClick={() => { setTab('signup'); setMessage(''); }}
+            onClick={handleSelectSignupTab}
             style={{
               flex: 1,
               padding: '0.85rem',
@@ -106,6 +152,7 @@ export default function AuthModal({ isOpen, onClose, initialTab = 'login' }) {
           >
             회원가입
           </button>
+
         </div>
 
         {/* Notice Badge */}
@@ -120,11 +167,28 @@ export default function AuthModal({ isOpen, onClose, initialTab = 'login' }) {
           color: 'var(--brand-primary)'
         }}>
           <ShieldCheck size={16} />
-          <span>인증 서비스는 추후 Supabase 백엔드로 실제 연동됩니다.</span>
+          <span>Supabase 백엔드 인증 시스템 연동됨</span>
         </div>
 
         {/* Form Body */}
         <form onSubmit={handleSubmit} style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          {errorMsg && (
+            <div style={{
+              backgroundColor: '#FEE2E2',
+              color: '#991B1B',
+              padding: '0.75rem 1rem',
+              borderRadius: '8px',
+              fontSize: '0.875rem',
+              fontWeight: 500,
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem'
+            }}>
+              <AlertCircle size={18} />
+              <span>{errorMsg}</span>
+            </div>
+          )}
+
           {message && (
             <div style={{
               backgroundColor: '#DCFCE7',
@@ -141,6 +205,7 @@ export default function AuthModal({ isOpen, onClose, initialTab = 'login' }) {
               <span>{message}</span>
             </div>
           )}
+
 
           {tab === 'signup' && (
             <>
@@ -236,11 +301,13 @@ export default function AuthModal({ isOpen, onClose, initialTab = 'login' }) {
 
           <button
             type="submit"
+            disabled={loading}
             className="btn btn-primary"
-            style={{ width: '100%', padding: '0.8rem', marginTop: '0.5rem' }}
+            style={{ width: '100%', padding: '0.8rem', marginTop: '0.5rem', opacity: loading ? 0.7 : 1 }}
           >
-            {tab === 'login' ? '로그인하기' : '회원가입하기'}
+            {loading ? '처리 중...' : (tab === 'login' ? '로그인하기' : '회원가입하기')}
           </button>
+
         </form>
       </div>
     </div>

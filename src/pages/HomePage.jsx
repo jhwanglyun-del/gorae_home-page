@@ -1,10 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { BRAND_INFO, MENU_ITEMS, REVIEWS } from '../data/mockData';
 import MenuDetailModal from '../components/MenuDetailModal';
 import { 
   Sparkles, ExternalLink, Calendar, Clock, MapPin, 
-  ChevronRight, Star, Heart, CheckCircle2, Utensils, Award, Users 
+  ChevronRight, Star, CheckCircle2, Utensils, Award, Users 
 } from 'lucide-react';
+
+const CATEGORIES = ['전체', '추천 세트', '부대전골/단품', '소불고기', '포장 이벤트', '사이드 별미', '추가 사리'];
+
+
+
+
 
 export default function HomePage({ onOpenAuth }) {
   const [activeCategory, setActiveCategory] = useState('전체');
@@ -19,11 +25,13 @@ export default function HomePage({ onOpenAuth }) {
     note: ''
   });
 
-  const categories = ['전체', '부대찌개', '안주/구이', '사리류'];
+  const categories = CATEGORIES;
 
-  const filteredItems = activeCategory === '전체' 
-    ? MENU_ITEMS 
-    : MENU_ITEMS.filter(item => item.category === activeCategory);
+  const filteredItems = useMemo(() => {
+    return activeCategory === '전체' 
+      ? MENU_ITEMS 
+      : MENU_ITEMS.filter(item => item.category === activeCategory);
+  }, [activeCategory]);
 
   const handleReservationSubmit = (e) => {
     e.preventDefault();
@@ -33,6 +41,7 @@ export default function HomePage({ onOpenAuth }) {
       setReserveForm({ name: '', phone: '', date: '2026-07-29', time: '18:00', guests: '2명', note: '' });
     }, 4000);
   };
+
 
   return (
     <div style={{ backgroundColor: 'var(--bg-primary)' }}>
@@ -74,7 +83,7 @@ export default function HomePage({ onOpenAuth }) {
               lineHeight: '1.7',
               marginBottom: '2rem'
             }}>
-              직접 조리한 수제햄의 깊은 풍미와 24시간 푹 우려낸 사골육수.<br />
+              직접 조리한 수제햄의 깊은 풍미와 상황버섯·표고버섯으로 우려낸 깊고 깔끔한 육수.<br />
               짜지 않고 담백하여 남녀노소 누구나 감탄하는 고래급 명품 부대찌개를 만나보세요.
             </p>
 
@@ -113,8 +122,8 @@ export default function HomePage({ onOpenAuth }) {
               </div>
               <div style={{ width: '1px', backgroundColor: 'var(--border-medium)' }}></div>
               <div>
-                <div style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--brand-primary)' }}>24Hours</div>
-                <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>사골 우린 깊은 육수</div>
+                <div style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--brand-primary)' }}>Healthy</div>
+                <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>상황버섯·표고버섯 우린 깊고 깔끔한 육수</div>
               </div>
               <div style={{ width: '1px', backgroundColor: 'var(--border-medium)' }}></div>
               <div>
@@ -148,7 +157,7 @@ export default function HomePage({ onOpenAuth }) {
                 color: '#FFFFFF'
               }}>
                 <div style={{ fontSize: '0.85rem', color: '#E09B3D', fontWeight: 700 }}>SIGNATURE DISH</div>
-                <div style={{ fontSize: '1.3rem', fontWeight: 800 }}>수제햄 꽃부대찌개</div>
+                <div style={{ fontSize: '1.3rem', fontWeight: 800 }}>고래정통 꽃부대찌개</div>
               </div>
             </div>
 
@@ -169,7 +178,7 @@ export default function HomePage({ onOpenAuth }) {
               <span style={{ fontSize: '1.4rem' }}>🥓</span>
               <div>
                 <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>수제햄 당일 제조</div>
-                <div style={{ fontSize: '0.875rem', fontWeight: 800, color: 'var(--brand-dark)' }}>신선한 수제 사큐테리</div>
+                <div style={{ fontSize: '0.875rem', fontWeight: 800, color: 'var(--brand-dark)' }}>신선한 프리미엄 수제햄</div>
               </div>
             </div>
           </div>
@@ -233,10 +242,10 @@ export default function HomePage({ onOpenAuth }) {
                 <Utensils size={32} />
               </div>
               <h3 style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: '0.75rem', color: 'var(--brand-dark)' }}>
-                24시간 우려낸 깊은 사골육수
+                상황버섯 & 표고버섯 우린 깔끔한 육수
               </h3>
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.925rem', lineHeight: '1.6' }}>
-                인위적인 감칠맛이 아닌, 24시간 정성으로 푹 곤 진한 사골육수가 찌개의 담백한 끝맛을 책임집니다.
+                인위적인 감칠맛이 아닌, 상황버섯과 표고버섯을 넣고 우려낸 깊고 깔끔한 육수가 찌개의 담백한 끝맛을 책임집니다.
               </p>
             </div>
 
@@ -274,7 +283,9 @@ export default function HomePage({ onOpenAuth }) {
             backgroundColor: 'var(--bg-surface-warm)',
             border: '1px solid var(--border-medium)'
           }}>
-            <img src="/images/ham.png" alt="수제햄 만들기" style={{ width: '100%', height: '280px', objectFit: 'cover' }} />
+            <img src="/images/ham_artisan.jpg" alt="장인이 직접 만드는 수제햄 과정" style={{ width: '100%', height: '340px', objectFit: 'cover', objectPosition: 'center' }} />
+
+
             <div style={{ padding: '2.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--brand-dark)', marginBottom: '1rem' }}>
                 손끝에서 완성되는 명품 수제햄
@@ -359,16 +370,17 @@ export default function HomePage({ onOpenAuth }) {
                       position: 'absolute',
                       top: '10px',
                       left: '10px',
-                      backgroundColor: 'var(--brand-primary)',
+                      backgroundColor: item.badgeText === '베스트 대표메뉴' ? 'var(--brand-primary)' : '#D97706',
                       color: '#FFFFFF',
                       fontSize: '0.75rem',
                       fontWeight: 700,
                       padding: '0.25rem 0.6rem',
                       borderRadius: '12px'
                     }}>
-                      인기 히트
+                      {item.badgeText || '인기 히트'}
                     </span>
                   )}
+
                 </div>
 
                 <div style={{ padding: '1.25rem', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
@@ -401,8 +413,10 @@ export default function HomePage({ onOpenAuth }) {
                     borderTop: '1px solid var(--border-light)'
                   }}>
                     <span style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--brand-primary)' }}>
+                      {item.servingSize ? <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', fontWeight: 600, marginRight: '0.3rem' }}>{item.servingSize}</span> : null}
                       {item.price.toLocaleString()}원
                     </span>
+
                     <span style={{ fontSize: '0.825rem', fontWeight: 600, color: 'var(--brand-dark)', display: 'flex', alignItems: 'center' }}>
                       상세보기 <ChevronRight size={16} />
                     </span>
@@ -445,17 +459,24 @@ export default function HomePage({ onOpenAuth }) {
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', fontSize: '0.925rem' }}>
                 <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
-                  <MapPin size={20} color="#B83A24" style={{ flexShrink: 0, marginTop: '2px' }} />
+                  <MapPin size={20} color="#FF585D" style={{ flexShrink: 0, marginTop: '2px' }} />
                   <div>
                     <strong>주소:</strong> {BRAND_INFO.address}
                   </div>
                 </div>
                 <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
-                  <Clock size={20} color="#B83A24" style={{ flexShrink: 0, marginTop: '2px' }} />
+                  <Clock size={20} color="#FF585D" style={{ flexShrink: 0, marginTop: '2px' }} />
                   <div>
-                    <strong>운영시간:</strong> {BRAND_INFO.businessHours}
+                    <div><strong>운영시간:</strong> {BRAND_INFO.businessHours}</div>
+                    {BRAND_INFO.breakTime && (
+                      <div style={{ color: '#E09B3D', fontWeight: 600, marginTop: '0.25rem' }}>
+                        <strong>브레이크타임:</strong> {BRAND_INFO.breakTime}
+                      </div>
+                    )}
                   </div>
                 </div>
+
+
               </div>
 
               {/* Naver Place Direct Button */}
@@ -656,10 +677,11 @@ export default function HomePage({ onOpenAuth }) {
       <MenuDetailModal
         item={selectedMenu}
         onClose={() => setSelectedMenu(null)}
-        onOrder={(item) => {
+        onOrder={() => {
           const reserveEl = document.querySelector('#reserve-form');
           if (reserveEl) reserveEl.scrollIntoView({ behavior: 'smooth' });
         }}
+
       />
 
     </div>

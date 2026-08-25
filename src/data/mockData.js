@@ -4,61 +4,441 @@ export const BRAND_INFO = {
   name: "수제햄 고래부대찌개",
   tagline: "100% 무방부제 국산 돼지고기로 직접 만드는 명품 부대찌개",
   naverPlaceUrl: "https://naver.me/FNmGfZuO",
-  phone: "031-123-4567",
-  address: "경기도 용인시 기흥구 흥덕2로 75 1층 (수제햄 고래부대찌개)",
-  businessHours: "매일 11:00 ~ 21:30 (라스트오더 20:50, 브레이크타임 15:00 ~ 17:00)",
+  phone: "0507-1496-0148",
+
+  address: "충북 청주시 청원구 오창읍 중심상업2로 13 (수제햄 고래부대찌개 오창본점)",
+  businessHours: "매일 10:30 ~ 21:20",
+  breakTime: "16:00 ~ 17:00",
+
+
   features: [
     { title: "100% 무방부제 국산 수제햄", desc: "국산 돈육만을 사용하여 아질산나트륨 등 인공방부제 없이 건강하게 만듭니다." },
-    { title: "깊고 진한 24시간 사골육수", desc: "매일 직접 우려내는 사골육수의 깊은 맛과 수제햄의 감칠맛이 조화를 이룹니다." },
+    { title: "상황버섯 & 표고버섯 육수", desc: "상황버섯과 표고버섯을 넣고 우려낸 깊고 깔끔한 육수의 감칠맛이 조화를 이룹니다." },
     { title: "고래급 푸짐함과 정성", desc: "넉넉한 수제햄 양과 아낌없는 사리 서비스로 고객 한 분 한 분을 대접합니다." }
   ]
 };
 
 export const MENU_ITEMS = [
+  // 1. 추천 세트 (고래의 추천/한상/나눔상/동행상)
   {
-    id: 1,
-    name: "수제햄 꽃부대찌개",
-    category: "부대찌개",
-    price: 13000,
+    id: 101,
+    name: "전갈비 한상 (4인)",
+    category: "추천 세트",
+    price: 73000,
+    servingSize: "(4인분)",
     isPopular: true,
-    desc: "화려하게 피어난 5가지 프리미엄 수제햄과 깊은 사골육수가 어우러진 시그니처 대표 메뉴",
+    badgeText: "인기 히트",
+    desc: "고래의 최고급 전골과 수제 떡갈비를 한 번에! 4인 모임에 가장 푸짐하고 완벽한 프리미엄 한상입니다. (소고기햄이 우러난 진한 국물과 단짠 떡갈비의 조화가 미쳤습니다!)",
+    image: "/images/gorae_budaejjigae.jpg",
+    spicyLevel: 2,
+    ingredients: ["소고기햄 대왕전골 3인", "수제 떡갈비스테이크 2개", "상황·표고 육수", "라면사리·밥 무한"]
+  },
+  {
+    id: 102,
+    name: "실속 꽃갈비 나눔상 (3인)",
+    category: "추천 세트",
+    price: 48000,
+    servingSize: "(3인분)",
+    isPopular: true,
+    badgeText: "인기 히트",
+    desc: "3인 방문 시 단골 주문 1위! 화려한 꽃부대찌개에 수제 떡갈비와 별미 계란후라이까지 더한 가성비 끝판왕 세트입니다.",
     image: "/images/hero.png",
     spicyLevel: 2,
-    ingredients: ["수제 꽃햄", "수제 수제비햄", "국산 돈육 소세지", "특제 다대기", "사골육수", "치즈"]
+    ingredients: ["고래정통 꽃부대찌개 3인", "수제 떡갈비스테이크 1개", "계란후라이 2개", "라면사리·밥 무한"]
+  },
+  {
+    id: 103,
+    name: "꽃갈비 동행상 (2인)",
+    category: "추천 세트",
+    price: 34000,
+    servingSize: "(2인분)",
+    isPopular: true,
+    badgeText: "인기 히트",
+    desc: "2인 테이블 단골 주문 1위! 고래의 시그니처 정통꽃부대찌개와 육즙 가득 수제 떡갈비를 완벽한 밸런스로 즐겨보세요.",
+    image: "/images/hero.png",
+    spicyLevel: 2,
+    ingredients: ["고래정통 꽃부대찌개 2인", "수제 떡갈비스테이크 1개", "라면사리·밥 무한"]
+  },
+  {
+    id: 104,
+    name: "꽃갈비 한상 (4인)",
+    category: "추천 세트",
+    price: 68000,
+    servingSize: "(4인분)",
+    isPopular: false,
+    desc: "4인 테이블 단골 주문 1위! 화려한 시그니처 정통꽃부대찌개와 수제 떡갈비의 환상적인 궁합을 즐겨보세요.",
+    image: "/images/hero.png",
+    spicyLevel: 2,
+    ingredients: ["고래정통 꽃부대찌개 4인", "수제 떡갈비스테이크 2개", "라면사리·밥 무한"]
+  },
+  {
+    id: 105,
+    name: "꽃락센 한상 (4인)",
+    category: "추천 세트",
+    price: 72000,
+    servingSize: "(4인분)",
+    isPopular: true,
+    badgeText: "인기 히트",
+    desc: "고래의 두 시그니처, 정통꽃부대찌개와 겉바속촉 명품 락센의 만남! 특별한 날을 위한 최고급 세트입니다. [조리시간 40분 소요]",
+    image: "/images/hero.png",
+    spicyLevel: 2,
+    ingredients: ["정통꽃부대찌개 2인", "명품 락족 1족", "라면사리·밥 무한"]
+  },
+  {
+    id: 106,
+    name: "전갈비 나눔상 (3인)",
+    category: "추천 세트",
+    price: 58000,
+    servingSize: "(3인분)",
+    isPopular: false,
+    desc: "진한 소고기햄 대왕전골에 수제 떡갈비 2개를 더해 3인이 든든하게! 고기 풍미를 꼭 잡은 프리미엄 세트입니다.",
+    image: "/images/gorae_budaejjigae.jpg",
+    spicyLevel: 2,
+    ingredients: ["소고기햄 대왕전골 2인", "수제 떡갈비스테이크 2개"]
+  },
+  {
+    id: 107,
+    name: "전갈비 동행상 (2인)",
+    category: "추천 세트",
+    price: 48000,
+    servingSize: "(2인분)",
+    isPopular: false,
+    desc: "최고급 소고기햄 대왕전골에 육즙 가득 떡갈비까지! 두 분이서 오붓하고 특별하게 즐기는 2인 세트입니다.",
+    image: "/images/gorae_budaejjigae.jpg",
+    spicyLevel: 2,
+    ingredients: ["소고기햄 대왕전골 2인", "수제 떡갈비스테이크 1개"]
+  },
+
+  // 2. 부대전골/단품 (고래의 본상)
+  {
+    id: 1,
+    name: "고래정통 꽃부대찌개",
+    category: "부대전골/단품",
+    price: 13000,
+    servingSize: "(1인분)",
+    isPopular: true,
+    badgeText: "베스트 대표메뉴",
+    desc: "처음 오셨다면 무조건 이거! 단골들이 항상 찾는 고래의 진짜 기본(시그니처)입니다.",
+    image: "/images/hero.png",
+    spicyLevel: 2,
+    ingredients: ["수제 꽃햄", "수제 수제비햄", "국산 돈육 소세지", "특제 다대기", "버섯 특제육수", "치즈"]
+  },
+  {
+    id: 201,
+    name: "고래 동충하초 꽃부대찌개",
+    category: "부대전골/단품",
+    price: 17000,
+    servingSize: "(1인분)",
+    isPopular: true,
+    badgeText: "인기 히트",
+    desc: "귀한 동충하초가 듬뿍! 부대찌개를 완벽한 보양식으로 끌어올린 명품 찌개입니다.",
+    image: "/images/hero.png",
+    spicyLevel: 2,
+    ingredients: ["귀한 동충하초", "수제 꽃햄", "수제비햄", "상황·표고 육수"]
+  },
+  {
+    id: 202,
+    name: "고래 흑마늘 꽃부대찌개",
+    category: "부대전골/단품",
+    price: 15000,
+    servingSize: "(1인분)",
+    isPopular: false,
+    desc: "숙성 흑마늘이 품은 깊고 진한 국물! 지친 몸에 활력을 채워주는 든든한 보양 별미입니다.",
+    image: "/images/hero.png",
+    spicyLevel: 2,
+    ingredients: ["숙성 흑마늘", "수제 꽃햄", "국산 돈육 소세지", "버섯 특제육수"]
+  },
+  {
+    id: 203,
+    name: "고래부대찌개 (실속형)",
+    category: "부대전골/단품",
+    price: 11000,
+    servingSize: "(1인분)",
+    isPopular: false,
+    desc: "가볍게 드시기 좋은 실속형 메뉴입니다. (풍성한 햄과 베이컨, 물만두 등 화려한 토핑을 원하시면 정통꽃부대찌개를 추천합니다!)",
+    image: "/images/hero.png",
+    spicyLevel: 2,
+    ingredients: ["수제 클래식햄", "대파", "팽이버섯", "숙성 김치", "특제육수"]
   },
   {
     id: 2,
-    name: "고래 부대찌개",
-    category: "부대찌개",
-    price: 11000,
+    name: "고래 소고기햄 대왕꽃전골 (4인)",
+    category: "부대전골/단품",
+    price: 65000,
+    servingSize: "(4인분)",
     isPopular: true,
-    desc: "고래부대찌개만의 아낌없는 푸짐함! 클래식 수제햄과 김치의 시원칼칼한 깔끔함",
-    image: "/images/hero.png",
+    badgeText: "인기 히트",
+    desc: "일반 햄이 아닙니다! 귀한 [소고기햄]을 빈틈없이 가득 채운 압도적인 프리미엄 전골! (가족 모임, 단체 회식에 가장 완벽하고 푸짐한 선택입니다)",
+    image: "/images/gorae_budaejjigae.jpg",
     spicyLevel: 2,
-    ingredients: ["클래식 수제햄", "대파", "팽이버섯", "숙성 김치", "특제육수"]
+    ingredients: ["귀한 소고기햄", "수제 꽃햄", "동충하초", "흑마늘", "상황버섯·표고버섯", "특제 명품육수"]
   },
+  {
+    id: 204,
+    name: "고래 소고기햄 대왕꽃전골 (3인)",
+    category: "부대전골/단품",
+    price: 55000,
+    servingSize: "(3인분)",
+    isPopular: false,
+    desc: "고래가 가장 자신 있게 내놓는 편안함! 진한 육수와 소고기햄의 미친 풍미를 경험해 보세요. (3인이 고기로 배를 채울 수 있는 넉넉한 양입니다)",
+    image: "/images/gorae_budaejjigae.jpg",
+    spicyLevel: 2,
+    ingredients: ["귀한 소고기햄", "수제 꽃햄", "동충하초", "흑마늘", "상황버섯·표고버섯"]
+  },
+  {
+    id: 205,
+    name: "고래 소고기햄 대왕꽃전골 (2인)",
+    category: "부대전골/단품",
+    price: 40000,
+    servingSize: "(2인분)",
+    isPopular: false,
+    desc: "수제 소고기햄을 아낌없이 듬뿍! 두 분이서 오붓하고 특별하게 즐기는 최고급 전골입니다.",
+    image: "/images/gorae_budaejjigae.jpg",
+    spicyLevel: 2,
+    ingredients: ["귀한 소고기햄", "수제 꽃햄", "상황버섯·표고버섯", "특제 명품육수"]
+  },
+
+  // 3. 소불고기
   {
     id: 3,
-    name: "수제햄 모듬 구이",
-    category: "안주/구이",
-    price: 28000,
-    isPopular: false,
-    desc: "갓 구워낸 수제햄의 바삭함과 육즙이 폭발하는 별미 철판 구이 요리",
-    image: "/images/ham.png",
+    name: "고래대왕꽃소불고기 (4인/고기1,000g)",
+    category: "소불고기",
+    price: 58000,
+    servingSize: "(4인분/고기1KG)",
+    isPopular: true,
+    badgeText: "인기 히트",
+    desc: "밥별도/ 산더미 소불고기와 진한 보양육수가 어우러진 고래만의 특별한 꽃소불고기",
+    image: "/images/flower_bulgogi.jpg",
     spicyLevel: 1,
-    ingredients: ["수제 모듬햄 4종", "파채", "구운 구운버섯", "수제 와사비 소스"]
+    ingredients: ["산더미 소불고기(1,000g)", "수제 꽃햄", "신선 숙주·파채", "상황·표고 보양육수"]
   },
   {
-    id: 4,
-    name: "수제 떡갈비 / 만두 사리",
-    category: "사리류",
-    price: 6000,
+    id: 301,
+    name: "고래대왕꽃소불고기 (3인/고기700g)",
+    category: "소불고기",
+    price: 45000,
+    servingSize: "(3인분/고기700g)",
     isPopular: false,
-    desc: "부대찌개의 풍미를 더욱 깊게 만들어주는 100% 수제 떡갈비 추가 사리",
+    desc: "밥별도/ 산더미 소불고기와 진한 보양육수가 어우러진 고래만의 특별한 꽃소불고기",
+    image: "/images/flower_bulgogi.jpg",
+    spicyLevel: 1,
+    ingredients: ["산더미 소불고기(700g)", "수제 꽃햄", "신선 숙주·파채", "상황·표고 보양육수"]
+  },
+  {
+    id: 302,
+    name: "고래대왕꽃소불고기 (2인/고기500g)",
+    category: "소불고기",
+    price: 35000,
+    servingSize: "(2인분/고기500g)",
+    isPopular: false,
+    desc: "밥별도/ 산더미 소불고기와 진한 보양육수가 어우러진 고래만의 특별한 꽃소불고기",
+    image: "/images/flower_bulgogi.jpg",
+    spicyLevel: 1,
+    ingredients: ["산더미 소불고기(500g)", "수제 꽃햄", "신선 숙주·파채", "상황·표고 보양육수"]
+  },
+
+  // 4. 포장 이벤트
+  {
+    id: 401,
+    name: "[포장] 꽃부대 2+1 (채널추가)",
+    category: "포장 이벤트",
+    price: 26000,
+    servingSize: "(포장 3인분)",
+    isPopular: true,
+    badgeText: "인기 히트",
+    desc: "고래부대찌개의 진한 맛을 집에서도 넉넉하게! 매장에서 드시는 맛 그대로, 집에서도 간편하게 즐기실 수 있도록 육수와 신선한 재료를 넉넉히 담았습니다.",
+    image: "/images/hero.png",
+    spicyLevel: 2,
+    ingredients: ["꽃부대 2인분 결제 시 + 1인분 증정", "육수 넉넉히 제공"]
+  },
+
+  // 5. 사이드 별미 (고래의 별미)
+  {
+    id: 4,
+    name: "육즙떡갈비스테이크",
+    category: "사이드 별미",
+    price: 10000,
+    servingSize: "(1인분)",
+    isPopular: true,
+    badgeText: "인기 히트",
+    desc: "부대찌개와 최고의 짝꿍! 남녀노소 누구나 좋아하는 1등 별미 / 100% 두툼한 국산 수제 떡갈비에 계란후라이와 특제 데리야끼 소스를 얹었습니다.",
+    image: "/images/tteokgalbi.jpg",
+    spicyLevel: 0,
+    ingredients: ["100% 국산 수제 떡갈비", "계란후라이", "그릴 파프리카", "특제 데리야끼 소스"]
+  },
+  {
+    id: 501,
+    name: "고래보양락족 (2~3인분)",
+    category: "사이드 별미",
+    price: 50000,
+    servingSize: "(2~3인분)",
+    isPopular: true,
+    badgeText: "인기 히트",
+    desc: "[조리시간 40분 소요] 겉바속촉의 진수! 학생은 굽는 시간이 걸리니 꼭 미리 주문해 주세요!",
+    image: "/images/ham_artisan.jpg",
+    spicyLevel: 0,
+    ingredients: ["프리미엄 락족 1족", "특제 바베큐 소스", "파채·무쌈"]
+  },
+  {
+    id: 502,
+    name: "고래 그린부어스트 스테이크",
+    category: "사이드 별미",
+    price: 6500,
+    servingSize: "(1인분)",
+    isPopular: false,
+    desc: "고래가 직접 만든 수제 소시지를 노릇하게 구워낸 프리미엄 사이드 메뉴입니다. 겉은 바삭하고 속은 촉촉한 그린부어스트에 머스터드의 산뜻한 풍미를 더해 부대찌개와 함께 곁들이기 좋은 고래더담음 별미입니다.",
     image: "/images/ham.png",
     spicyLevel: 0,
-    ingredients: ["수제 떡갈비 2pcs", "손만두 4pcs"]
+    ingredients: ["수제 그린부어스트 소세지", "특제 머스터드 소스"]
+  },
+  {
+    id: 503,
+    name: "어린이 든든세트 (계란+김가루+밥)",
+    category: "사이드 별미",
+    price: 3000,
+    servingSize: "(어린이용)",
+    isPopular: false,
+    desc: "아이들이 가장 좋아해요! 매운 부대찌개를 못 먹는 우리 아이들을 위한 든든한 한 끼! (김가루에 쓱쓱 비벼주세요)",
+    image: "/images/hero.png",
+    spicyLevel: 0,
+    ingredients: ["계란후라이", "바삭 김가루", "고소한 흰쌀밥"]
+  },
+
+  // 6. 추가 사리 (고래의 더담음)
+  {
+    id: 601,
+    name: "명품 소고기햄 사리",
+    category: "추가 사리",
+    price: 12000,
+    desc: "일반 햄과는 차원이 다른 극강의 고기 풍미! 국물의 품격을 완전히 바꿔놓는 최고급 사리입니다.",
+    image: "/images/gorae_budaejjigae.jpg",
+    spicyLevel: 0,
+    ingredients: ["프리미엄 소고기햄"]
+  },
+  {
+    id: 602,
+    name: "고래보양 버섯모듬사리",
+    category: "추가 사리",
+    price: 10000,
+    desc: "동충하초와 삼색은이버섯, 표고·느타리를 담은 고래만의 보양 버섯 사리",
+    image: "/images/gorae_budaejjigae.jpg",
+    spicyLevel: 0,
+    ingredients: ["동충하초", "삼색은이버섯", "표고버섯", "느타리버섯"]
+  },
+  {
+    id: 603,
+    name: "귀한 동충하초 사리",
+    category: "추가 사리",
+    price: 10000,
+    desc: "부대찌개를 완벽한 보양식으로 업그레이드! 건강과 깊은 맛을 동시에 챙기는 귀한 버섯입니다.",
+    image: "/images/gorae_budaejjigae.jpg",
+    spicyLevel: 0,
+    ingredients: ["귀한 동충하초"]
+  },
+  {
+    id: 604,
+    name: "모듬 사리 (햄+소시지)",
+    category: "추가 사리",
+    price: 8000,
+    desc: "고기 러버들을 위한 탁월한 선택! 진하고 깊은 고기 육수의 끝판왕을 원 없이 즐겨보세요.",
+    image: "/images/hero.png",
+    spicyLevel: 0,
+    ingredients: ["수제 햄", "수제 소시지"]
+  },
+  {
+    id: 605,
+    name: "시그니처 꽃베이컨",
+    category: "추가 사리",
+    price: 7000,
+    desc: "고래부대의 진짜 매력! 예쁜 비주얼은 물론 국물에 녹아든 베이컨의 깊은 감칠맛이 일품입니다.",
+    image: "/images/hero.png",
+    spicyLevel: 0,
+    ingredients: ["프리미엄 꽃베이컨"]
+  },
+  {
+    id: 606,
+    name: "수제 햄 추가",
+    category: "추가 사리",
+    price: 6000,
+    desc: "기본에 충실하고 싶다면? 고래만의 맛있는 수제 햄으로 찌개를 더 팍 채워보세요.",
+    image: "/images/hero.png",
+    spicyLevel: 0,
+    ingredients: ["수제 햄"]
+  },
+  {
+    id: 607,
+    name: "수제 소시지 추가",
+    category: "추가 사리",
+    price: 6000,
+    desc: "기본에 충실하고 싶다면? 고래만의 맛있는 수제 소시지로 찌개를 더 팍 채워보세요.",
+    image: "/images/hero.png",
+    spicyLevel: 0,
+    ingredients: ["수제 소시지"]
+  },
+  {
+    id: 608,
+    name: "알찬 물만두 (15개)",
+    category: "추가 사리",
+    price: 3000,
+    desc: "한 입에 쏙! 촉촉한 물만두가 부대찌개 골라 먹는 재미를 두 배로 올려줍니다.",
+    image: "/images/hero.png",
+    spicyLevel: 0,
+    ingredients: ["물만두 15개"]
+  },
+  {
+    id: 609,
+    name: "버섯 (표고, 느타리)",
+    category: "추가 사리",
+    price: 3000,
+    desc: "고기 육수에 버섯의 향긋함이 더해지면 국물이 훨씬 시원하고 깔끔해집니다.",
+    image: "/images/hero.png",
+    spicyLevel: 0,
+    ingredients: ["표고버섯", "느타리버섯"]
+  },
+  {
+    id: 610,
+    name: "쫄깃 당면",
+    category: "추가 사리",
+    price: 2000,
+    desc: "무료 라면사리와는 차원이 다른 매력! 진한 육수를 팍 빨아들인 쫄깃한 별미입니다.",
+    image: "/images/hero.png",
+    spicyLevel: 0,
+    ingredients: ["당면 사리"]
+  },
+  {
+    id: 611,
+    name: "쫀득한 떡",
+    category: "추가 사리",
+    price: 2000,
+    desc: "햄을 더 드리기 위해 뺐던 바로 그 떡! 쫀득한 떡 사리가 아쉬우셨다면 추가해 보세요.",
+    image: "/images/hero.png",
+    spicyLevel: 0,
+    ingredients: ["떡 사리"]
+  },
+  {
+    id: 612,
+    name: "고소한 치즈",
+    category: "추가 사리",
+    price: 1000,
+    desc: "얼큰한 국물을 훨씬 더 부드럽고 진하게 만들어 주는 마법의 한 장!",
+    image: "/images/hero.png",
+    spicyLevel: 0,
+    ingredients: ["체다 치즈 1장"]
+  },
+  {
+    id: 613,
+    name: "계란후라이",
+    category: "추가 사리",
+    price: 1000,
+    desc: "진한 부대찌개 국물에 밥과 함께 쓱쓱 비벼 먹을 때 절대 빠질 수 없는 필수템!",
+    image: "/images/hero.png",
+    spicyLevel: 0,
+    ingredients: ["계란후라이 1개"]
   }
+
+
+
+
 ];
 
 export const REVIEWS = [
@@ -67,8 +447,8 @@ export const REVIEWS = [
     name: "김태희 님",
     rating: 5,
     date: "2026.07.24",
-    comment: "수제햄이라 자극적이지 않고 짜지 않아서 아이들과 먹기 너무 좋았어요! 국물이 깔끔하고 사골의 깊은 맛이 감동입니다.",
-    menu: "수제햄 꽃부대찌개"
+    comment: "수제햄이라 자극적이지 않고 짜지 않아서 아이들과 먹기 너무 좋았어요! 버섯 육수의 깔끔하고 깊은 맛이 감동입니다.",
+    menu: "고래정통 꽃부대찌개"
   },
   {
     id: 2,
@@ -76,16 +456,18 @@ export const REVIEWS = [
     rating: 5,
     date: "2026.07.22",
     comment: "부대찌개 매니아인데 단연 1등입니다. 햄 양이 정말 고래만큼 푸짐하고 라면사리와 밥이 무한이라 가성비 최고예요.",
-    menu: "고래 부대찌개"
+    menu: "소고기햄대왕꽃부대전골"
   },
+
   {
     id: 3,
     name: "이수진 님",
     rating: 5,
     date: "2026.07.19",
-    comment: "매장 분위기도 정갈하고 따뜻하며 직원의 친절한 설명이 인상깊었습니다. 부대찌개 다 먹고 모듬구이 꼭 드세요!",
-    menu: "수제햄 모듬 구이"
+    comment: "매장 분위기도 정갈하고 따뜻하며 직원의 친절한 설명이 인상깊었습니다. 부대전골 다 먹고 대왕꽃 소불고기 꼭 드세요!",
+    menu: "고래 대왕꽃 소불고기"
   }
+
 ];
 
 // Admin Mock Data
@@ -140,9 +522,11 @@ export const SALES_TREND_WEEKLY = [
 ];
 
 export const MENU_SALES_SHARE = [
-  { menu: "수제햄 꽃부대찌개", share: 48, revenue: 25100000, color: "#B83A24" },
-  { menu: "고래 부대찌개", share: 32, revenue: 16700000, color: "#D97706" },
-  { menu: "수제햄 모듬 구이", share: 12, revenue: 6300000, color: "#4A170F" },
+  { menu: "고래정통 꽃부대찌개", share: 48, revenue: 25100000, color: "#B83A24" },
+  { menu: "소고기햄대왕꽃부대전골", share: 32, revenue: 16700000, color: "#D97706" },
+
+  { menu: "고래 대왕꽃 소불고기", share: 12, revenue: 6300000, color: "#4A170F" },
+
   { menu: "사리 및 음료/주류", share: 8, revenue: 4300000, color: "#9E928A" }
 ];
 
