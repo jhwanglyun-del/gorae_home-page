@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { 
   ADMIN_STATS, REALTIME_CUSTOMERS, TIER_DISTRIBUTION, 
   CUSTOMER_LIST, SALES_TREND_WEEKLY, MENU_SALES_SHARE, HOURLY_PEAK_TRAFFIC 
@@ -6,8 +6,9 @@ import {
 import { 
   LayoutDashboard, Users, BarChart3, TrendingUp, DollarSign, 
   ShoppingBag, Award, Filter, Search, Download, RefreshCw, 
-  ArrowUpRight, Clock, Plus, Minus, UserCheck, ChevronRight, X, CheckCircle2, Shield, Calendar
+  ArrowUpRight, Plus, Minus, X, CheckCircle2, Shield, Calendar
 } from 'lucide-react';
+
 
 export default function AdminPage({ onNavigate }) {
   const [activeTab, setActiveTab] = useState('dashboard'); // 'dashboard' | 'customers' | 'reports'
@@ -30,42 +31,46 @@ export default function AdminPage({ onNavigate }) {
   const [reportPeriod, setReportPeriod] = useState('monthly');
   const [downloadToast, setDownloadToast] = useState(false);
 
-  // Filter logic for Customer Management
-  const filteredCustomers = CUSTOMER_LIST.filter(cst => {
-    if (filterGender !== '전체' && cst.gender !== filterGender) return false;
-    if (filterAge !== '전체' && cst.age !== filterAge) return false;
-    if (filterTier !== '전체' && cst.tier !== filterTier) return false;
-    
-    if (filterFreq === '1-3회' && (cst.frequency < 1 || cst.frequency > 3)) return false;
-    if (filterFreq === '4-10회' && (cst.frequency < 4 || cst.frequency > 10)) return false;
-    if (filterFreq === '10회이상' && cst.frequency <= 10) return false;
+  // Memoized filter logic for Customer Management
+  const filteredCustomers = useMemo(() => {
+    return CUSTOMER_LIST.filter(cst => {
+      if (filterGender !== '전체' && cst.gender !== filterGender) return false;
+      if (filterAge !== '전체' && cst.age !== filterAge) return false;
+      if (filterTier !== '전체' && cst.tier !== filterTier) return false;
+      
+      if (filterFreq === '1-3회' && (cst.frequency < 1 || cst.frequency > 3)) return false;
+      if (filterFreq === '4-10회' && (cst.frequency < 4 || cst.frequency > 10)) return false;
+      if (filterFreq === '10회이상' && cst.frequency <= 10) return false;
 
-    if (filterAmount === '10만미만' && cst.amount >= 100000) return false;
-    if (filterAmount === '10만-50만' && (cst.amount < 100000 || cst.amount > 500000)) return false;
-    if (filterAmount === '50만-100만' && (cst.amount < 500000 || cst.amount > 1000000)) return false;
-    if (filterAmount === '100만이상' && cst.amount <= 1000000) return false;
+      if (filterAmount === '10만미만' && cst.amount >= 100000) return false;
+      if (filterAmount === '10만-50만' && (cst.amount < 100000 || cst.amount > 500000)) return false;
+      if (filterAmount === '50만-100만' && (cst.amount < 500000 || cst.amount > 1000000)) return false;
+      if (filterAmount === '100만이상' && cst.amount <= 1000000) return false;
 
-    if (searchQuery.trim() !== '') {
-      const q = searchQuery.toLowerCase();
-      return cst.name.toLowerCase().includes(q) || cst.id.toLowerCase().includes(q);
-    }
-    return true;
-  }).sort((a, b) => {
-    if (sortBy === 'amount_desc') return b.amount - a.amount;
-    if (sortBy === 'amount_asc') return a.amount - b.amount;
-    if (sortBy === 'freq_desc') return b.frequency - a.frequency;
-    if (sortBy === 'points_desc') return b.points - a.points;
-    return 0;
-  });
+      if (searchQuery.trim() !== '') {
+        const q = searchQuery.toLowerCase();
+        return cst.name.toLowerCase().includes(q) || cst.id.toLowerCase().includes(q);
+      }
+      return true;
+    }).sort((a, b) => {
+      if (sortBy === 'amount_desc') return b.amount - a.amount;
+      if (sortBy === 'amount_asc') return a.amount - b.amount;
+      if (sortBy === 'freq_desc') return b.frequency - a.frequency;
+      if (sortBy === 'points_desc') return b.points - a.points;
+      return 0;
+    });
+  }, [filterGender, filterAge, filterTier, filterFreq, filterAmount, searchQuery, sortBy]);
 
-  // Handle Point Adjustment
+  // Immutable Handle Point Adjustment
   const handleAdjustPoints = (type) => {
     if (!selectedCustomer) return;
     const delta = type === 'add' ? pointDelta : -pointDelta;
-    selectedCustomer.points = Math.max(0, selectedCustomer.points + delta);
-    setPointMessage(`${type === 'add' ? '지급' : '차감'} 완료! 현재 포인트: ${selectedCustomer.points.toLocaleString()}pt`);
+    const updatedPoints = Math.max(0, (selectedCustomer.points || 0) + delta);
+    setSelectedCustomer(prev => (prev ? { ...prev, points: updatedPoints } : null));
+    setPointMessage(`${type === 'add' ? '지급' : '차감'} 완료! 현재 포인트: ${updatedPoints.toLocaleString()}pt`);
     setTimeout(() => setPointMessage(''), 2500);
   };
+
 
   // Handle Report Export
   const handleExportReport = () => {
@@ -832,7 +837,7 @@ export default function AdminPage({ onNavigate }) {
                   fontSize: '0.85rem',
                   color: 'var(--text-secondary)'
                 }}>
-                  💡 <strong>인사이트:</strong> '수제햄 꽃부대찌개'가 전체 매출의 약 48%를 차지하여 압도적 1위 효자 메뉴로 집계됩니다.
+                  💡 <strong>인사이트:</strong> '고래정통 꽃부대찌개'가 전체 매출의 약 48%를 차지하여 압도적 1위 효자 메뉴로 집계됩니다.
                 </div>
               </div>
 

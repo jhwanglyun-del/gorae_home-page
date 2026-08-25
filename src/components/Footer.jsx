@@ -1,8 +1,9 @@
 import React from 'react';
 import { BRAND_INFO } from '../data/mockData';
-import { MapPin, Phone, Clock, ExternalLink, Shield } from 'lucide-react';
+import { MapPin, Phone, Clock, ExternalLink } from 'lucide-react';
 
-export default function Footer({ onNavigate }) {
+export default function Footer() {
+
   return (
     <footer style={{
       backgroundColor: 'var(--brand-dark)',
@@ -21,7 +22,11 @@ export default function Footer({ onNavigate }) {
           {/* Brand & Naver Place */}
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1rem' }}>
-              <span style={{ fontSize: '1.8rem' }}>🐋</span>
+              <div style={{ width: '48px', height: '48px', backgroundColor: '#FFFFFF', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '3px' }}>
+                <img src="/images/logo.png" alt="수제햄 고래부대찌개 로고" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+              </div>
+
+
               <div>
                 <h3 style={{ fontSize: '1.25rem', fontWeight: 900, color: '#FFFFFF' }}>
                   수제햄 고래부대찌개
@@ -30,7 +35,8 @@ export default function Footer({ onNavigate }) {
               </div>
             </div>
             <p style={{ fontSize: '0.875rem', lineHeight: '1.6', color: '#C8BCAE', marginBottom: '1.25rem' }}>
-              100% 무방부제 국산 돼지고기로 직접 만드는 프리미엄 수제햄과 24시간 우려낸 깊은 사골육수의 완벽한 조화.
+              100% 무방부제 국산 돼지고기로 직접 만드는 프리미엄 수제햄과 상황버섯·표고버섯으로 우려낸 깊고 깔끔한 육수의 완벽한 조화.
+
             </p>
             {/* Naver Place Link Button */}
             <a
@@ -70,38 +76,28 @@ export default function Footer({ onNavigate }) {
                 <span>전화: {BRAND_INFO.phone}</span>
               </li>
               <li style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem' }}>
-                <Clock size={18} style={{ color: '#D97706', shrink: 0, marginTop: '2px' }} />
-                <span>영업시간: {BRAND_INFO.businessHours}</span>
+                <Clock size={18} style={{ color: '#D97706', flexShrink: 0, marginTop: '2px' }} />
+                <div>
+                  <div>영업시간: {BRAND_INFO.businessHours}</div>
+                  {BRAND_INFO.breakTime && (
+                    <div style={{ color: '#F87171', fontWeight: 600, marginTop: '0.2rem' }}>
+                      브레이크타임: {BRAND_INFO.breakTime}
+                    </div>
+                  )}
+                </div>
               </li>
+
             </ul>
           </div>
 
-          {/* Quick Links & Admin */}
+          {/* Customer Service & Information */}
           <div>
             <h4 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#FFFFFF', marginBottom: '1rem', borderLeft: '3px solid var(--brand-primary)', paddingLeft: '0.5rem' }}>
-              관리 서비스
+              고객 서비스
             </h4>
             <p style={{ fontSize: '0.85rem', color: '#C8BCAE', marginBottom: '1rem' }}>
-              점주 및 관리자 전용 대시보드에서 매출, 고객, 포인트를 통합 관리하세요.
+              단체 예약 문의 및 제휴 문의는 대표번호 또는 네이버 예약을 이용해 주시기 바랍니다.
             </p>
-            <button
-              onClick={() => onNavigate('/admin')}
-              className="btn"
-              style={{
-                backgroundColor: 'rgba(255,255,255,0.1)',
-                border: '1px solid rgba(255,255,255,0.2)',
-                color: '#FFFFFF',
-                fontSize: '0.85rem',
-                padding: '0.6rem 1.1rem',
-                borderRadius: '8px',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.5rem'
-              }}
-            >
-              <Shield size={16} color="#E09B3D" />
-              <span>관리자 대시보드 접속 (/admin)</span>
-            </button>
           </div>
         </div>
 
@@ -123,10 +119,9 @@ export default function Footer({ onNavigate }) {
             <a href={BRAND_INFO.naverPlaceUrl} target="_blank" rel="noreferrer" style={{ color: '#A09385', textDecoration: 'underline' }}>
               네이버 스마트플레이스
             </a>
-            <span>|</span>
-            <span style={{ cursor: 'pointer' }} onClick={() => onNavigate('/admin')}>관리자페이지</span>
           </div>
         </div>
+
       </div>
     </footer>
   );

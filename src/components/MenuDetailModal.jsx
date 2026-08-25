@@ -79,8 +79,10 @@ export default function MenuDetailModal({ item, onClose, onOrder }) {
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.5rem' }}>
             <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--text-primary)' }}>{item.name}</h3>
             <span style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--brand-primary)' }}>
+              {item.servingSize ? <span style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', fontWeight: 600, marginRight: '0.3rem' }}>{item.servingSize}</span> : null}
               {item.price.toLocaleString()}원
             </span>
+
           </div>
 
           <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', marginBottom: '1.25rem', lineHeight: '1.5' }}>

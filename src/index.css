@@ -15,12 +15,12 @@
   --text-muted: #9E928A;
   --text-light: #FAF6F0;
   
-  --brand-primary: #B83A24;
-  --brand-primary-hover: #9E2F1B;
+  --brand-primary: #FF585D;
+  --brand-primary-hover: #E5474C;
   --brand-secondary: #D97706;
-  --brand-accent: #E06D53;
+  --brand-accent: #FF7A7E;
   --brand-dark: #4A170F;
-  --brand-light: #FDF1ED;
+  --brand-light: #FFF0F1;
   
   --border-light: #EBE3D7;
   --border-medium: #D6C9B8;
@@ -105,7 +105,7 @@ input, select, textarea {
 .badge-primary {
   background-color: var(--brand-light);
   color: var(--brand-primary);
-  border: 1px solid rgba(184, 58, 36, 0.2);
+  border: 1px solid rgba(255, 88, 93, 0.2);
 }
 
 .badge-gold {
@@ -157,13 +157,13 @@ input, select, textarea {
 .btn-primary {
   background-color: var(--brand-primary);
   color: #FFFFFF;
-  box-shadow: 0 4px 12px rgba(184, 58, 36, 0.25);
+  box-shadow: 0 4px 12px rgba(255, 88, 93, 0.3);
 }
 
 .btn-primary:hover {
   background-color: var(--brand-primary-hover);
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(184, 58, 36, 0.35);
+  box-shadow: 0 6px 16px rgba(255, 88, 93, 0.4);
 }
 
 .btn-outline {
