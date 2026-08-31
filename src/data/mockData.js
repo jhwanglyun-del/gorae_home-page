@@ -326,7 +326,7 @@ export const MENU_ITEMS = [
     category: "추가 사리",
     price: 7000,
     desc: "고래부대의 진짜 매력! 예쁜 비주얼은 물론 국물에 녹아든 베이컨의 깊은 감칠맛이 일품입니다.",
-    image: "/images/hero.png",
+    image: "/images/sari_bacon.png",
     spicyLevel: 0,
     ingredients: ["프리미엄 꽃베이컨"]
   },
@@ -336,7 +336,7 @@ export const MENU_ITEMS = [
     category: "추가 사리",
     price: 6000,
     desc: "기본에 충실하고 싶다면? 고래만의 맛있는 수제 햄으로 찌개를 더 팍 채워보세요.",
-    image: "/images/hero.png",
+    image: "/images/sari_ham.png",
     spicyLevel: 0,
     ingredients: ["수제 햄"]
   },
@@ -346,7 +346,7 @@ export const MENU_ITEMS = [
     category: "추가 사리",
     price: 6000,
     desc: "기본에 충실하고 싶다면? 고래만의 맛있는 수제 소시지로 찌개를 더 팍 채워보세요.",
-    image: "/images/hero.png",
+    image: "/images/sari_sausage.png",
     spicyLevel: 0,
     ingredients: ["수제 소시지"]
   },
@@ -356,7 +356,7 @@ export const MENU_ITEMS = [
     category: "추가 사리",
     price: 3000,
     desc: "한 입에 쏙! 촉촉한 물만두가 부대찌개 골라 먹는 재미를 두 배로 올려줍니다.",
-    image: "/images/hero.png",
+    image: "/images/sari_dumpling.png",
     spicyLevel: 0,
     ingredients: ["물만두 15개"]
   },
@@ -366,7 +366,7 @@ export const MENU_ITEMS = [
     category: "추가 사리",
     price: 3000,
     desc: "고기 육수에 버섯의 향긋함이 더해지면 국물이 훨씬 시원하고 깔끔해집니다.",
-    image: "/images/hero.png",
+    image: "/images/sari_mushroom.png",
     spicyLevel: 0,
     ingredients: ["표고버섯", "느타리버섯"]
   },
@@ -376,7 +376,7 @@ export const MENU_ITEMS = [
     category: "추가 사리",
     price: 2000,
     desc: "무료 라면사리와는 차원이 다른 매력! 진한 육수를 팍 빨아들인 쫄깃한 별미입니다.",
-    image: "/images/hero.png",
+    image: "/images/sari_glass_noodle.png",
     spicyLevel: 0,
     ingredients: ["당면 사리"]
   },
@@ -386,7 +386,7 @@ export const MENU_ITEMS = [
     category: "추가 사리",
     price: 2000,
     desc: "햄을 더 드리기 위해 뺐던 바로 그 떡! 쫀득한 떡 사리가 아쉬우셨다면 추가해 보세요.",
-    image: "/images/hero.png",
+    image: "/images/sari_rice_cake.png",
     spicyLevel: 0,
     ingredients: ["떡 사리"]
   },
@@ -396,7 +396,7 @@ export const MENU_ITEMS = [
     category: "추가 사리",
     price: 1000,
     desc: "얼큰한 국물을 훨씬 더 부드럽고 진하게 만들어 주는 마법의 한 장!",
-    image: "/images/hero.png",
+    image: "/images/sari_cheese.png",
     spicyLevel: 0,
     ingredients: ["체다 치즈 1장"]
   },

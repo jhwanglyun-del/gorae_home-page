@@ -24,12 +24,21 @@
   - 상단 카테고리 탭 변경 시 자동으로 9개 기본 상태로 리셋.
   - 데스크탑에서는 정갈한 3열 배치, 태블릿 2열, 모바일 1열로 반응형 최적화(`.menu-grid`).
 
-### 📸 3) 꽃갈비 & 전갈비 및 시그니처 단품·사이드·사리·이벤트 메뉴 대표 이미지 실물 상차림 사진으로 세분화 교체
+### 📸 3) 꽃갈비 & 전갈비 및 시그니처 단품·사이드·사리(전체)·이벤트 메뉴 대표 이미지 실물 상차림 사진으로 세분화 교체
 - **개선 사항**:
-  - **`명품 소고기햄 사리`**: 타원형 접시에 정갈하게 담긴 소고기햄 전용 실물 사진(`public/images/sari_beef_ham.png`) 적용 완료.
-  - **`고래보양 버섯모듬사리`**: 신선한 표고 및 느타리버섯이 담긴 버섯모듬 전용 실물 사진(`public/images/sari_mushroom.png`) 적용 완료.
-  - **`귀한 동충하초 사리`**: 황금빛 동충하초가 접시 가득 담긴 동충하초 전용 실물 사진(`public/images/sari_dongchunghacho.jpg`) 적용 완료.
-  - **`모듬 사리 (햄+소시지)`**: 수제 햄과 소시지, 떡, 대파, 특제 다대기가 풍성하게 담긴 모듬사리 전용 실물 사진(`public/images/sari_assorted.png`) 적용 완료.
+  - **`추가 사리 전 품목 실물 사진 매핑 완료`**:
+    - `명품 소고기햄 사리`: `public/images/sari_beef_ham.png`
+    - `고래보양 버섯모듬사리`: `public/images/sari_mushroom.png`
+    - `귀한 동충하초 사리`: `public/images/sari_dongchunghacho.jpg`
+    - `모듬 사리 (햄+소시지)`: `public/images/sari_assorted.png`
+    - `시그니처 꽃베이컨`: `public/images/sari_bacon.png`
+    - `수제 햄 추가`: `public/images/sari_ham.png`
+    - `수제 소시지 추가`: `public/images/sari_sausage.png`
+    - `알찬 물만두 (15개)`: `public/images/sari_dumpling.png`
+    - `버섯 (표고, 느타리)`: `public/images/sari_mushroom.png`
+    - `쫄깃 당면`: `public/images/sari_glass_noodle.png`
+    - `쫀득한 떡`: `public/images/sari_rice_cake.png`
+    - `고소한 치즈`: `public/images/sari_cheese.png`
   - **`어린이 든든세트 (계란+김가루+밥)`**: 원목 트레이 위에 계란후라이 밥공기와 수저가 정갈하게 담긴 **어린이 든든세트 전용 실물 사진**(`public/images/kids_meal_set.png`)으로 교체 완료.
   - **`수제떡갈비스테이크`**: 메뉴명을 기존 `육즙떡갈비스테이크`에서 직관적인 **`수제떡갈비스테이크`**로 통일 변경.
   - **`고래보양락족 (2~3인분)`**: 품절/미운영에 따라 사이드 별미 메뉴판에서 **완전 삭제** 처리.
