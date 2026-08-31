@@ -42,7 +42,7 @@ export const MENU_ITEMS = [
     isPopular: true,
     badgeText: "인기 히트",
     desc: "3인 방문 시 단골 주문 1위! 화려한 꽃부대찌개에 수제 떡갈비와 별미 계란후라이까지 더한 가성비 끝판왕 세트입니다.",
-    image: "/images/hero.png",
+    image: "/images/flower_tteokgalbi_set.jpg",
     spicyLevel: 2,
     ingredients: ["고래정통 꽃부대찌개 3인", "수제 떡갈비스테이크 1개", "계란후라이 2개", "라면사리·밥 무한"]
   },
@@ -55,7 +55,7 @@ export const MENU_ITEMS = [
     isPopular: true,
     badgeText: "인기 히트",
     desc: "2인 테이블 단골 주문 1위! 고래의 시그니처 정통꽃부대찌개와 육즙 가득 수제 떡갈비를 완벽한 밸런스로 즐겨보세요.",
-    image: "/images/hero.png",
+    image: "/images/flower_tteokgalbi_set.jpg",
     spicyLevel: 2,
     ingredients: ["고래정통 꽃부대찌개 2인", "수제 떡갈비스테이크 1개", "라면사리·밥 무한"]
   },
@@ -67,7 +67,7 @@ export const MENU_ITEMS = [
     servingSize: "(4인분)",
     isPopular: false,
     desc: "4인 테이블 단골 주문 1위! 화려한 시그니처 정통꽃부대찌개와 수제 떡갈비의 환상적인 궁합을 즐겨보세요.",
-    image: "/images/hero.png",
+    image: "/images/flower_tteokgalbi_set.jpg",
     spicyLevel: 2,
     ingredients: ["고래정통 꽃부대찌개 4인", "수제 떡갈비스테이크 2개", "라면사리·밥 무한"]
   },
