@@ -3,23 +3,30 @@ import { BRAND_INFO, MENU_ITEMS, REVIEWS } from '../data/mockData';
 import MenuDetailModal from '../components/MenuDetailModal';
 import { 
   Sparkles, ExternalLink, Calendar, Clock, MapPin, 
-  ChevronRight, Star, CheckCircle2, Utensils, Award, Users 
+  ChevronRight, Star, CheckCircle2, Utensils, Award, Users, PhoneCall,
+  ChevronDown, ChevronUp
 } from 'lucide-react';
 
 const CATEGORIES = ['전체', '추천 세트', '부대전골/단품', '소불고기', '포장 이벤트', '사이드 별미', '추가 사리'];
 
-
-
-
+// Helper for today's ISO date string (YYYY-MM-DD)
+const getTodayDate = () => {
+  const now = new Date();
+  const y = now.getFullYear();
+  const m = String(now.getMonth() + 1).padStart(2, '0');
+  const d = String(now.getDate()).padStart(2, '0');
+  return `${y}-${m}-${d}`;
+};
 
 export default function HomePage({ onOpenAuth }) {
   const [activeCategory, setActiveCategory] = useState('전체');
   const [selectedMenu, setSelectedMenu] = useState(null);
   const [reserveSuccess, setReserveSuccess] = useState(false);
+  const [isMenuExpanded, setIsMenuExpanded] = useState(false);
   const [reserveForm, setReserveForm] = useState({
     name: '',
     phone: '',
-    date: '2026-07-29',
+    date: getTodayDate(),
     time: '18:00',
     guests: '2명',
     note: ''
@@ -33,12 +40,50 @@ export default function HomePage({ onOpenAuth }) {
       : MENU_ITEMS.filter(item => item.category === activeCategory);
   }, [activeCategory]);
 
+  // Display initial 9 items (3x3), or all items if expanded
+  const visibleItems = useMemo(() => {
+    if (isMenuExpanded) return filteredItems;
+    return filteredItems.slice(0, 9);
+  }, [filteredItems, isMenuExpanded]);
+
+  const handlePhoneChange = (e) => {
+    const raw = e.target.value.replace(/[^0-9]/g, '').slice(0, 11);
+    let formatted = raw;
+    if (raw.length > 3 && raw.length <= 7) {
+      formatted = `${raw.slice(0, 3)}-${raw.slice(3)}`;
+    } else if (raw.length > 7) {
+      formatted = `${raw.slice(0, 3)}-${raw.slice(3, 7)}-${raw.slice(7)}`;
+    }
+    setReserveForm(prev => ({ ...prev, phone: formatted }));
+  };
+
   const handleReservationSubmit = (e) => {
     e.preventDefault();
+    
+    // Save to localStorage for AdminPage sync
+    const newReservation = {
+      id: Date.now(),
+      name: reserveForm.name,
+      phone: reserveForm.phone,
+      date: reserveForm.date,
+      time: reserveForm.time,
+      guests: reserveForm.guests,
+      note: reserveForm.note,
+      status: '접수대기',
+      createdAt: new Date().toLocaleString()
+    };
+
+    try {
+      const existing = JSON.parse(localStorage.getItem('gorae_reservations') || '[]');
+      localStorage.setItem('gorae_reservations', JSON.stringify([newReservation, ...existing]));
+    } catch (err) {
+      console.warn('예약 로컬 저장 실패:', err);
+    }
+
     setReserveSuccess(true);
     setTimeout(() => {
       setReserveSuccess(false);
-      setReserveForm({ name: '', phone: '', date: '2026-07-29', time: '18:00', guests: '2명', note: '' });
+      setReserveForm({ name: '', phone: '', date: getTodayDate(), time: '18:00', guests: '2명', note: '' });
     }, 4000);
   };
 
@@ -323,7 +368,10 @@ export default function HomePage({ onOpenAuth }) {
             {categories.map((cat, idx) => (
               <button
                 key={idx}
-                onClick={() => setActiveCategory(cat)}
+                onClick={() => {
+                  setActiveCategory(cat);
+                  setIsMenuExpanded(false);
+                }}
                 style={{
                   padding: '0.65rem 1.4rem',
                   borderRadius: '25px',
@@ -341,13 +389,9 @@ export default function HomePage({ onOpenAuth }) {
             ))}
           </div>
 
-          {/* Menu Grid */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(270px, 1fr))',
-            gap: '2rem'
-          }}>
-            {filteredItems.map((item) => (
+          {/* Menu Grid (3x3 Layout) */}
+          <div className="menu-grid">
+            {visibleItems.map((item) => (
               <div
                 key={item.id}
                 className="card"
@@ -425,6 +469,60 @@ export default function HomePage({ onOpenAuth }) {
               </div>
             ))}
           </div>
+
+          {/* Load More / Collapse Button when items exceed 9 */}
+          {filteredItems.length > 9 && (
+            <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+              <button
+                onClick={() => {
+                  if (isMenuExpanded) {
+                    setIsMenuExpanded(false);
+                    const menuSec = document.querySelector('#menu');
+                    if (menuSec) menuSec.scrollIntoView({ behavior: 'smooth' });
+                  } else {
+                    setIsMenuExpanded(true);
+                  }
+                }}
+                className="btn btn-outline"
+                style={{
+                  padding: '0.9rem 2.2rem',
+                  fontSize: '1rem',
+                  fontWeight: 700,
+                  borderRadius: '30px',
+                  boxShadow: 'var(--shadow-sm)',
+                  backgroundColor: '#FFFFFF',
+                  color: 'var(--brand-dark)',
+                  borderColor: 'var(--border-medium)',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.6rem',
+                  transition: 'all 0.25s'
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--brand-primary)';
+                  e.currentTarget.style.color = 'var(--brand-primary)';
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--border-medium)';
+                  e.currentTarget.style.color = 'var(--brand-dark)';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                }}
+              >
+                {isMenuExpanded ? (
+                  <>
+                    <span>메뉴 접기 (9개만 보기)</span>
+                    <ChevronUp size={18} />
+                  </>
+                ) : (
+                  <>
+                    <span>전체 메뉴 더보기 ({filteredItems.length - 9}개 더보기)</span>
+                    <ChevronDown size={18} />
+                  </>
+                )}
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
@@ -549,11 +647,14 @@ export default function HomePage({ onOpenAuth }) {
                   <input
                     type="tel"
                     required
-                    placeholder="010-1234-5678"
+                    placeholder="010-0000-0000"
                     value={reserveForm.phone}
-                    onChange={(e) => setReserveForm({ ...reserveForm, phone: e.target.value })}
+                    onChange={handlePhoneChange}
                     style={{ width: '100%', padding: '0.65rem 0.8rem', borderRadius: '8px', border: '1px solid var(--border-medium)', outline: 'none' }}
                   />
+                  <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '0.2rem', display: 'block' }}>
+                    * 숫자 입력 시 자동으로 하이픈(-)이 생성됩니다.
+                  </span>
                 </div>
 
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
@@ -562,6 +663,7 @@ export default function HomePage({ onOpenAuth }) {
                     <input
                       type="date"
                       required
+                      min={getTodayDate()}
                       value={reserveForm.date}
                       onChange={(e) => setReserveForm({ ...reserveForm, date: e.target.value })}
                       style={{ width: '100%', padding: '0.65rem 0.8rem', borderRadius: '8px', border: '1px solid var(--border-medium)', outline: 'none' }}
@@ -677,12 +779,71 @@ export default function HomePage({ onOpenAuth }) {
       <MenuDetailModal
         item={selectedMenu}
         onClose={() => setSelectedMenu(null)}
-        onOrder={() => {
+        onOrder={(item) => {
+          setReserveForm(prev => ({
+            ...prev,
+            note: prev.note ? `${prev.note} / [문의 메뉴: ${item.name}]` : `[문의 메뉴: ${item.name}]`
+          }));
           const reserveEl = document.querySelector('#reserve-form');
-          if (reserveEl) reserveEl.scrollIntoView({ behavior: 'smooth' });
+          if (reserveEl) {
+            reserveEl.scrollIntoView({ behavior: 'smooth' });
+          }
         }}
-
       />
+
+      {/* Floating Quick Action Bar for Mobile Visitors */}
+      <aside className="floating-quick-bar">
+        <a
+          href={`tel:${BRAND_INFO.phone}`}
+          className="btn btn-outline"
+          style={{
+            flex: 1,
+            padding: '0.65rem 0.5rem',
+            fontSize: '0.85rem',
+            borderRadius: '10px',
+            borderColor: '#F3D5CC',
+            color: 'var(--brand-primary)',
+            fontWeight: 700
+          }}
+        >
+          <PhoneCall size={16} />
+          <span>전화 상담</span>
+        </a>
+
+        <a
+          href={BRAND_INFO.naverPlaceUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn"
+          style={{
+            flex: 1,
+            backgroundColor: '#03C75A',
+            color: '#FFFFFF',
+            padding: '0.65rem 0.5rem',
+            fontSize: '0.85rem',
+            borderRadius: '10px',
+            fontWeight: 700
+          }}
+        >
+          <ExternalLink size={16} />
+          <span>네이버 지도</span>
+        </a>
+
+        <a
+          href="#reserve-form"
+          className="btn btn-primary"
+          style={{
+            flex: 1.2,
+            padding: '0.65rem 0.5rem',
+            fontSize: '0.85rem',
+            borderRadius: '10px',
+            fontWeight: 700
+          }}
+        >
+          <Calendar size={16} />
+          <span>테이블 예약</span>
+        </a>
+      </aside>
 
     </div>
   );

@@ -29,7 +29,7 @@ export const MENU_ITEMS = [
     isPopular: true,
     badgeText: "인기 히트",
     desc: "고래의 최고급 전골과 수제 떡갈비를 한 번에! 4인 모임에 가장 푸짐하고 완벽한 프리미엄 한상입니다. (소고기햄이 우러난 진한 국물과 단짠 떡갈비의 조화가 미쳤습니다!)",
-    image: "/images/gorae_budaejjigae.jpg",
+    image: "/images/jeongalbi_hansang_4p.jpg",
     spicyLevel: 2,
     ingredients: ["소고기햄 대왕전골 3인", "수제 떡갈비스테이크 2개", "상황·표고 육수", "라면사리·밥 무한"]
   },
@@ -42,7 +42,7 @@ export const MENU_ITEMS = [
     isPopular: true,
     badgeText: "인기 히트",
     desc: "3인 방문 시 단골 주문 1위! 화려한 꽃부대찌개에 수제 떡갈비와 별미 계란후라이까지 더한 가성비 끝판왕 세트입니다.",
-    image: "/images/flower_tteokgalbi_set.jpg",
+    image: "/images/nanumsang_3p.jpg",
     spicyLevel: 2,
     ingredients: ["고래정통 꽃부대찌개 3인", "수제 떡갈비스테이크 1개", "계란후라이 2개", "라면사리·밥 무한"]
   },
@@ -55,7 +55,7 @@ export const MENU_ITEMS = [
     isPopular: true,
     badgeText: "인기 히트",
     desc: "2인 테이블 단골 주문 1위! 고래의 시그니처 정통꽃부대찌개와 육즙 가득 수제 떡갈비를 완벽한 밸런스로 즐겨보세요.",
-    image: "/images/flower_tteokgalbi_set.jpg",
+    image: "/images/flower_tteokgalbi_set_new.jpg",
     spicyLevel: 2,
     ingredients: ["고래정통 꽃부대찌개 2인", "수제 떡갈비스테이크 1개", "라면사리·밥 무한"]
   },
@@ -67,22 +67,9 @@ export const MENU_ITEMS = [
     servingSize: "(4인분)",
     isPopular: false,
     desc: "4인 테이블 단골 주문 1위! 화려한 시그니처 정통꽃부대찌개와 수제 떡갈비의 환상적인 궁합을 즐겨보세요.",
-    image: "/images/flower_tteokgalbi_set.jpg",
+    image: "/images/flower_hansang_4p.jpg",
     spicyLevel: 2,
     ingredients: ["고래정통 꽃부대찌개 4인", "수제 떡갈비스테이크 2개", "라면사리·밥 무한"]
-  },
-  {
-    id: 105,
-    name: "꽃락센 한상 (4인)",
-    category: "추천 세트",
-    price: 72000,
-    servingSize: "(4인분)",
-    isPopular: true,
-    badgeText: "인기 히트",
-    desc: "고래의 두 시그니처, 정통꽃부대찌개와 겉바속촉 명품 락센의 만남! 특별한 날을 위한 최고급 세트입니다. [조리시간 40분 소요]",
-    image: "/images/hero.png",
-    spicyLevel: 2,
-    ingredients: ["정통꽃부대찌개 2인", "명품 락족 1족", "라면사리·밥 무한"]
   },
   {
     id: 106,
