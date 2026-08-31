@@ -286,7 +286,7 @@ export const MENU_ITEMS = [
     category: "추가 사리",
     price: 12000,
     desc: "일반 햄과는 차원이 다른 극강의 고기 풍미! 국물의 품격을 완전히 바꿔놓는 최고급 사리입니다.",
-    image: "/images/gorae_budaejjigae.jpg",
+    image: "/images/sari_beef_ham.png",
     spicyLevel: 0,
     ingredients: ["프리미엄 소고기햄"]
   },
@@ -296,7 +296,7 @@ export const MENU_ITEMS = [
     category: "추가 사리",
     price: 10000,
     desc: "동충하초와 삼색은이버섯, 표고·느타리를 담은 고래만의 보양 버섯 사리",
-    image: "/images/gorae_budaejjigae.jpg",
+    image: "/images/sari_mushroom.png",
     spicyLevel: 0,
     ingredients: ["동충하초", "삼색은이버섯", "표고버섯", "느타리버섯"]
   },
@@ -306,7 +306,7 @@ export const MENU_ITEMS = [
     category: "추가 사리",
     price: 10000,
     desc: "부대찌개를 완벽한 보양식으로 업그레이드! 건강과 깊은 맛을 동시에 챙기는 귀한 버섯입니다.",
-    image: "/images/gorae_budaejjigae.jpg",
+    image: "/images/sari_dongchunghacho.jpg",
     spicyLevel: 0,
     ingredients: ["귀한 동충하초"]
   },
@@ -316,7 +316,7 @@ export const MENU_ITEMS = [
     category: "추가 사리",
     price: 8000,
     desc: "고기 러버들을 위한 탁월한 선택! 진하고 깊은 고기 육수의 끝판왕을 원 없이 즐겨보세요.",
-    image: "/images/hero.png",
+    image: "/images/sari_assorted.png",
     spicyLevel: 0,
     ingredients: ["수제 햄", "수제 소시지"]
   },
