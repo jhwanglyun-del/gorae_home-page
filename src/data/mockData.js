@@ -450,10 +450,10 @@ export const MENU_ITEMS = [
   },
   {
     id: 705,
-    name: "씨그램 탄산수 (355ml)",
+    name: "초정탄산수 (355ml)",
     category: "음료 및 주류",
     price: 2000,
-    desc: "당류 걱정 없이 깨끗하고 강렬한 탄산의 청량감",
+    desc: "세계 3대 광천수 초정약수로 만든 청량하고 깔끔한 탄산의 원조",
     image: "/images/beverage_sparkling.png",
     spicyLevel: 0
   },

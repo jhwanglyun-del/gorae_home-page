@@ -36,11 +36,17 @@ export default function MenuDetailModal({ item, onClose, onOrder }) {
         }}
       >
         {/* Image Banner */}
-        <div style={{ position: 'relative', height: '280px', backgroundColor: '#F4ECE1' }}>
+        <div style={{ position: 'relative', height: '280px', backgroundColor: '#F4ECE1', overflow: 'hidden' }}>
           <img
             src={item.image}
             alt={item.name}
-            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
+            style={{ 
+              width: '100%', 
+              height: '100%', 
+              objectFit: item.category === '음료 및 주류' ? 'contain' : 'cover', 
+              objectPosition: 'center',
+              padding: item.category === '음료 및 주류' ? '1rem' : '0'
+            }}
           />
           <button
             onClick={onClose}

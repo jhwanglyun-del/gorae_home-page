@@ -403,11 +403,16 @@ export default function HomePage({ onOpenAuth }) {
                 }}
                 onClick={() => setSelectedMenu(item)}
               >
-                <div style={{ position: 'relative', height: '180px', backgroundColor: '#F4ECE1' }}>
+                <div style={{ position: 'relative', height: '180px', backgroundColor: '#F4ECE1', overflow: 'hidden' }}>
                   <img
                     src={item.image}
                     alt={item.name}
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    style={{ 
+                      width: '100%', 
+                      height: '100%', 
+                      objectFit: item.category === '음료 및 주류' ? 'contain' : 'cover',
+                      padding: item.category === '음료 및 주류' ? '0.75rem' : '0'
+                    }}
                   />
                   {item.isPopular && (
                     <span style={{
