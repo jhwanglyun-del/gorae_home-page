@@ -222,7 +222,7 @@ export default function HomePage({ onOpenAuth }) {
                 100% 무방부제 국산 수제햄
               </h3>
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.925rem', lineHeight: '1.6' }}>
-                아질산나트륨, 보존제를 전혀 첨가하지 않고 국내산 한돈 100%로 건강하게 스모킹하여 만듭니다.
+                3무 1저의 고집을 지킵니다. 무방부제 무색소 무전분 저염식을 고집하며 국내산 한돈 100%로 고집스럽게 만듭니다.
               </p>
             </div>
 
