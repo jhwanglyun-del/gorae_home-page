@@ -31,6 +31,25 @@ export default function AdminPage({ onNavigate }) {
   const [reportPeriod, setReportPeriod] = useState('monthly');
   const [downloadToast, setDownloadToast] = useState(false);
 
+  // Online Reservations synced with localStorage
+  const [reservations, setReservations] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem('gorae_reservations') || '[]');
+    } catch {
+      return [];
+    }
+  });
+
+  const handleUpdateReservationStatus = (id, newStatus) => {
+    const updated = reservations.map(r => r.id === id ? { ...r, status: newStatus } : r);
+    setReservations(updated);
+    try {
+      localStorage.setItem('gorae_reservations', JSON.stringify(updated));
+    } catch (e) {
+      console.warn('예약 상태 로컬 저장 실패:', e);
+    }
+  };
+
   // Memoized filter logic for Customer Management
   const filteredCustomers = useMemo(() => {
     return CUSTOMER_LIST.filter(cst => {
@@ -334,6 +353,104 @@ export default function AdminPage({ onNavigate }) {
                   재방문단골 비율 우수
                 </div>
               </div>
+            </div>
+
+            {/* Online Reservation Live Management Card */}
+            <div className="card" style={{ padding: '1.5rem', borderLeft: '4px solid var(--brand-primary)' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem', flexWrap: 'wrap', gap: '0.5rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+                  <Calendar size={20} color="var(--brand-primary)" />
+                  <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--brand-dark)' }}>
+                    📅 홈페이지 온라인 예약 접수 현황
+                  </h3>
+                  <span className="badge badge-primary">
+                    총 {reservations.length}건
+                  </span>
+                </div>
+                <button
+                  onClick={() => {
+                    try {
+                      setReservations(JSON.parse(localStorage.getItem('gorae_reservations') || '[]'));
+                    } catch {
+                      setReservations([]);
+                    }
+                  }}
+                  className="btn btn-outline"
+                  style={{ padding: '0.4rem 0.75rem', fontSize: '0.8rem' }}
+                >
+                  <RefreshCw size={14} />
+                  <span>예약 새로고침</span>
+                </button>
+              </div>
+
+              {reservations.length === 0 ? (
+                <div style={{
+                  padding: '2rem',
+                  textAlign: 'center',
+                  color: 'var(--text-muted)',
+                  backgroundColor: 'var(--bg-primary)',
+                  borderRadius: '10px',
+                  fontSize: '0.9rem'
+                }}>
+                  접수된 온라인 예약 내역이 없습니다. (홈페이지에서 테이블 예약을 신청하면 실시간 동기화됩니다.)
+                </div>
+              ) : (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                  {reservations.map((res) => (
+                    <div
+                      key={res.id}
+                      style={{
+                        padding: '1rem 1.25rem',
+                        backgroundColor: 'var(--bg-primary)',
+                        borderRadius: '10px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        flexWrap: 'wrap',
+                        gap: '1rem',
+                        border: '1px solid var(--border-light)'
+                      }}
+                    >
+                      <div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.35rem' }}>
+                          <strong style={{ fontSize: '1rem', color: 'var(--brand-dark)' }}>{res.name}</strong>
+                          <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>({res.phone})</span>
+                          <span className={`badge ${res.status === '예약확정' ? 'badge-green' : res.status === '취소' ? 'badge-primary' : 'badge-gold'}`}>
+                            {res.status}
+                          </span>
+                        </div>
+                        <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                          <span><strong>방문일시:</strong> {res.date} {res.time}</span>
+                          <span><strong>인원:</strong> {res.guests}</span>
+                          {res.note && (
+                            <span style={{ color: 'var(--brand-primary)', fontWeight: 600 }}>
+                              <strong>요청:</strong> {res.note}
+                            </span>
+                          )}
+                          <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>신청: {res.createdAt}</span>
+                        </div>
+                      </div>
+
+                      <div style={{ display: 'flex', gap: '0.4rem' }}>
+                        <button
+                          onClick={() => handleUpdateReservationStatus(res.id, '예약확정')}
+                          className="btn btn-primary"
+                          style={{ padding: '0.4rem 0.8rem', fontSize: '0.8rem', borderRadius: '6px' }}
+                        >
+                          예약 확정
+                        </button>
+                        <button
+                          onClick={() => handleUpdateReservationStatus(res.id, '취소')}
+                          className="btn btn-outline"
+                          style={{ padding: '0.4rem 0.8rem', fontSize: '0.8rem', borderRadius: '6px', color: '#DC2626', borderColor: '#FCA5A5' }}
+                        >
+                          취소
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* Dashboard Middle Section: Realtime Customer Feed & Tier Distribution */}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { UserCheck, Menu as MenuIcon, X, LogIn, LogOut } from 'lucide-react';
+import { UserCheck, Menu as MenuIcon, X, LogIn, LogOut, ChevronRight, Calendar } from 'lucide-react';
 
 
 const NAV_LINKS = [
@@ -35,8 +35,8 @@ export default function Header({ currentPath, user, onNavigate, onOpenAuth, onSi
       position: 'sticky',
       top: 0,
       zIndex: 100,
-      backgroundColor: 'rgba(250, 246, 240, 0.94)',
-      backdropFilter: 'blur(8px)',
+      backgroundColor: 'rgba(250, 246, 240, 0.96)',
+      backdropFilter: 'blur(10px)',
       borderBottom: '1px solid var(--border-light)',
       boxShadow: 'var(--shadow-sm)'
     }}>
@@ -48,12 +48,15 @@ export default function Header({ currentPath, user, onNavigate, onOpenAuth, onSi
       }}>
         {/* Brand Logo */}
         <div 
-          onClick={() => onNavigate('/')} 
+          onClick={() => {
+            setMobileMenuOpen(false);
+            onNavigate('/');
+          }} 
           style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.6rem' }}
         >
           <div style={{
-            width: '54px',
-            height: '54px',
+            width: '52px',
+            height: '52px',
             borderRadius: '14px',
             backgroundColor: '#FFFFFF',
             display: 'flex',
@@ -65,7 +68,6 @@ export default function Header({ currentPath, user, onNavigate, onOpenAuth, onSi
           }}>
             <img src="/images/logo.png" alt="수제햄 고래부대찌개 로고" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
           </div>
-
 
           <div>
             <div style={{ fontSize: '1.2rem', fontWeight: 900, color: 'var(--brand-dark)', letterSpacing: '-0.5px' }}>
@@ -152,12 +154,11 @@ export default function Header({ currentPath, user, onNavigate, onOpenAuth, onSi
                 alignItems: 'center',
                 gap: '0.35rem'
               }}
-          >
-            <LogIn size={15} />
-            <span>로그인 / 회원가입</span>
-          </button>
+            >
+              <LogIn size={15} />
+              <span>로그인 / 회원가입</span>
+            </button>
           )}
-
 
           {/* Admin Page Link Button - only show back button when already on /admin */}
           {currentPath === '/admin' && (
@@ -170,21 +171,51 @@ export default function Header({ currentPath, user, onNavigate, onOpenAuth, onSi
                 borderRadius: '20px'
               }}
             >
-              홈페이지로 돌아가기
+              홈으로
             </button>
           )}
-
 
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            style={{ display: 'none', color: 'var(--brand-dark)' }}
             className="mobile-menu-btn"
+            aria-label="메뉴 열기/닫기"
           >
-            {mobileMenuOpen ? <X size={26} /> : <MenuIcon size={26} />}
+            {mobileMenuOpen ? <X size={26} color="var(--brand-dark)" /> : <MenuIcon size={26} color="var(--brand-dark)" />}
           </button>
         </div>
       </div>
+
+      {/* Mobile Menu Dropdown */}
+      {mobileMenuOpen && (
+        <div className="mobile-nav-dropdown">
+          {navLinks.map((link, idx) => (
+            <button
+              key={idx}
+              className="mobile-nav-link"
+              onClick={() => handleNavClick(link.href)}
+            >
+              <span>{link.label}</span>
+              <ChevronRight size={18} color="var(--text-muted)" />
+            </button>
+          ))}
+          
+          <div style={{ paddingTop: '0.75rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                handleNavClick('#reserve-form');
+              }}
+              className="btn btn-primary"
+              style={{ width: '100%', padding: '0.75rem', fontSize: '0.95rem' }}
+            >
+              <Calendar size={18} />
+              <span>테이블 간편 예약하기</span>
+            </button>
+          </div>
+        </div>
+      )}
     </header>
   );
 }
+

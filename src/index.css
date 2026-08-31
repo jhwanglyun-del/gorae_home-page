@@ -196,3 +196,108 @@ input, select, textarea {
 .animate-fade-in {
   animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
+
+/* Responsive Styles */
+.mobile-menu-btn {
+  display: none !important;
+}
+
+@media (max-width: 860px) {
+  .desktop-nav {
+    display: none !important;
+  }
+  
+  .mobile-menu-btn {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    border-radius: 8px;
+    background: transparent;
+  }
+}
+
+/* Mobile Nav Drawer / Dropdown */
+.mobile-nav-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #FFFFFF;
+  border-bottom: 2px solid var(--brand-primary);
+  box-shadow: 0 10px 25px rgba(44, 34, 30, 0.15);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  animation: fadeIn 0.25s ease;
+  z-index: 99;
+}
+
+.mobile-nav-link {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  padding: 0.75rem 0.5rem;
+  border-bottom: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link:active {
+  color: var(--brand-primary);
+}
+
+/* Floating Quick Action Bar (Mobile only) */
+.floating-quick-bar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid var(--border-medium);
+  padding: 0.65rem 1rem;
+  z-index: 900;
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.08);
+}
+
+@media (max-width: 768px) {
+  .floating-quick-bar {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: space-around;
+  }
+  
+  body {
+    padding-bottom: 60px; /* Quick bar offset */
+  }
+}
+
+/* 3x3 Menu Grid */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 1024px) {
+  .menu-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .menu-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+

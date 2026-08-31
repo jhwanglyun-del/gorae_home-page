@@ -5,36 +5,42 @@ export default function MenuDetailModal({ item, onClose, onOrder }) {
   if (!item) return null;
 
   return (
-    <div style={{
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      backgroundColor: 'rgba(44, 34, 30, 0.65)',
-      backdropFilter: 'blur(4px)',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      zIndex: 1000,
-      padding: '1rem'
-    }}>
-      <div style={{
-        backgroundColor: '#FFFFFF',
-        borderRadius: '16px',
-        width: '100%',
-        maxWidth: '520px',
-        boxShadow: '0 20px 40px rgba(0,0,0,0.2)',
-        overflow: 'hidden',
-        border: '1px solid var(--border-light)',
-        animation: 'fadeIn 0.3s ease'
-      }}>
+    <div 
+      onClick={onClose}
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: 'rgba(44, 34, 30, 0.65)',
+        backdropFilter: 'blur(4px)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        zIndex: 1000,
+        padding: '1rem'
+      }}
+    >
+      <div 
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          backgroundColor: '#FFFFFF',
+          borderRadius: '16px',
+          width: '100%',
+          maxWidth: '520px',
+          boxShadow: '0 20px 40px rgba(0,0,0,0.2)',
+          overflow: 'hidden',
+          border: '1px solid var(--border-light)',
+          animation: 'fadeIn 0.3s ease'
+        }}
+      >
         {/* Image Banner */}
-        <div style={{ position: 'relative', height: '220px', backgroundColor: '#F4ECE1' }}>
+        <div style={{ position: 'relative', height: '280px', backgroundColor: '#F4ECE1' }}>
           <img
             src={item.image}
             alt={item.name}
-            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
           />
           <button
             onClick={onClose}
@@ -117,7 +123,7 @@ export default function MenuDetailModal({ item, onClose, onOrder }) {
               주요 정성 재료
             </h4>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
-              {item.ingredients.map((ing, idx) => (
+              {item.ingredients?.map((ing, idx) => (
                 <span
                   key={idx}
                   style={{
@@ -131,7 +137,7 @@ export default function MenuDetailModal({ item, onClose, onOrder }) {
                 >
                   {ing}
                 </span>
-              ))}
+              )) || <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>정성껏 준비한 수제 재료</span>}
             </div>
           </div>
 

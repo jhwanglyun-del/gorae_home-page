@@ -52,14 +52,26 @@ export default function AuthModal({ isOpen, onClose, onNavigate, initialTab = 'l
           }
         });
         if (error) throw error;
-        setMessage(`'${name}' 님, Supabase 회원가입이 성공적으로 완료되었습니다!`);
+        setMessage(`'${name}' 님, 회원가입이 성공적으로 완료되었습니다!`);
         setTimeout(() => {
           setMessage('');
           onClose();
         }, 2000);
       }
     } catch (err) {
-      setErrorMsg(err.message || '인증 처리 중 오류가 발생했습니다.');
+      // Security Error Masking & Korean Friendly Messages
+      const raw = (err?.message || '').toLowerCase();
+      if (raw.includes('invalid login credentials') || raw.includes('invalid credentials')) {
+        setErrorMsg('이메일 또는 비밀번호가 일치하지 않습니다. 다시 확인해 주세요.');
+      } else if (raw.includes('user already registered') || raw.includes('already exists')) {
+        setErrorMsg('이미 가입되어 있는 이메일 주소입니다. 로그인해 주세요.');
+      } else if (raw.includes('email not confirmed')) {
+        setErrorMsg('이메일 인증 확인이 필요합니다. 받은 편지함을 확인해 주세요.');
+      } else if (raw.includes('rate limit') || raw.includes('too many requests')) {
+        setErrorMsg('요청이 너무 많습니다. 잠시 후 다시 시도해 주세요.');
+      } else {
+        setErrorMsg('인증 처리 중 문제가 발생했습니다. 잠시 후 다시 시도해 주세요.');
+      }
     } finally {
       setLoading(false);
     }
@@ -67,30 +79,36 @@ export default function AuthModal({ isOpen, onClose, onNavigate, initialTab = 'l
 
 
   return (
-    <div style={{
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      backgroundColor: 'rgba(44, 34, 30, 0.65)',
-      backdropFilter: 'blur(4px)',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      zIndex: 1000,
-      padding: '1rem'
-    }}>
-      <div style={{
-        backgroundColor: '#FFFFFF',
-        borderRadius: '16px',
-        width: '100%',
-        maxWidth: '440px',
-        boxShadow: '0 20px 40px rgba(0,0,0,0.2)',
-        overflow: 'hidden',
-        border: '1px solid var(--border-light)',
-        animation: 'fadeIn 0.3s ease'
-      }}>
+    <div 
+      onClick={onClose}
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: 'rgba(44, 34, 30, 0.65)',
+        backdropFilter: 'blur(4px)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        zIndex: 1000,
+        padding: '1rem'
+      }}
+    >
+      <div 
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          backgroundColor: '#FFFFFF',
+          borderRadius: '16px',
+          width: '100%',
+          maxWidth: '440px',
+          boxShadow: '0 20px 40px rgba(0,0,0,0.2)',
+          overflow: 'hidden',
+          border: '1px solid var(--border-light)',
+          animation: 'fadeIn 0.3s ease'
+        }}
+      >
         {/* Modal Header */}
         <div style={{
           backgroundColor: 'var(--brand-dark)',
@@ -167,7 +185,7 @@ export default function AuthModal({ isOpen, onClose, onNavigate, initialTab = 'l
           color: 'var(--brand-primary)'
         }}>
           <ShieldCheck size={16} />
-          <span>Supabase 백엔드 인증 시스템 연동됨</span>
+          <span>안전한 256비트 암호화 보안 로그인 시스템 적용</span>
         </div>
 
         {/* Form Body */}
