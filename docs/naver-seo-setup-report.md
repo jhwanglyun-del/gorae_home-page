@@ -16,7 +16,9 @@
 - 검색엔진이 주요 페이지를 빠짐없이 크롤링할 수 있도록 표준 XML 사이트맵 규격 준수.
 - 메인 홈(`/`, priority 1.0, daily) 및 회원가입 페이지(`/signup`, priority 0.8, monthly) 등록.
 
-### 🏷️ 3) index.html 메타 태그 보강
+### 🏷️ 3) index.html 메타 태그 보강 및 소유확인
+- **네이버 사이트 소유확인 메타태그**: `<meta name="naver-site-verification" content="8828f9bba281ead497070569af7feb1fac7655f2" />` 삽입 완료.
+- **네이버 소유확인 파일**: `public/naver345184bca78d270c94402cf50f9e3aeb.html` 생성 완료.
 - **Canonical 태그**: `<link rel="canonical" href="https://www.goraebudae.com/" />` 추가로 중복 콘텐츠 방지 및 대표 URL 지정.
 - **Robots 메타태그**: `<meta name="robots" content="index,follow" />` 명시.
 - **기존 정보 온전 유지**: 기존 `title` 및 `description` 100% 유지.
