@@ -6,4 +6,4 @@ User-agent: Yeti
 Allow: /
 Disallow: /admin
 
-Sitemap: https://www.goraebudae.com/sitemap.xml
+Sitemap: https://gorae-home-page.vercel.app/sitemap.xml
