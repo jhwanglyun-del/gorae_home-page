@@ -235,9 +235,9 @@ export const MENU_ITEMS = [
     isPopular: true,
     badgeText: "인기 히트",
     desc: "고래부대찌개의 진한 맛을 집에서도 넉넉하게! 매장에서 드시는 맛 그대로, 집에서도 간편하게 즐기실 수 있도록 육수와 신선한 재료를 넉넉히 담았습니다.",
-    image: "/images/hero.png",
+    image: "/images/takeout_event_2plus1.png",
     spicyLevel: 2,
-    ingredients: ["꽃부대 2인분 결제 시 + 1인분 증정", "육수 넉넉히 제공"]
+    ingredients: ["꽃부대 2인분 결제 시 + 1인분 증정", "육수 2팩", "라면사리", "설명서 동봉"]
   },
 
   // 5. 사이드 별미 (고래의 별미)
