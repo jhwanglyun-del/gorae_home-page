@@ -120,7 +120,7 @@ export const MENU_ITEMS = [
     isPopular: true,
     badgeText: "인기 히트",
     desc: "귀한 동충하초가 듬뿍! 부대찌개를 완벽한 보양식으로 끌어올린 명품 찌개입니다.",
-    image: "/images/hero.png",
+    image: "/images/dongchunghacho_budaejjigae.png",
     spicyLevel: 2,
     ingredients: ["귀한 동충하초", "수제 꽃햄", "수제비햄", "상황·표고 육수"]
   },
