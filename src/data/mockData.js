@@ -296,7 +296,7 @@ export const MENU_ITEMS = [
     category: "추가 사리",
     price: 10000,
     desc: "동충하초와 삼색은이버섯, 표고·느타리를 담은 고래만의 보양 버섯 사리",
-    image: "/images/sari_mushroom.png",
+    image: "/images/sari_mushroom_assorted.png",
     spicyLevel: 0,
     ingredients: ["동충하초", "삼색은이버섯", "표고버섯", "느타리버섯"]
   },
