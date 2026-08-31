@@ -73,15 +73,16 @@ export const MENU_ITEMS = [
   },
   {
     id: 106,
-    name: "전갈비 나눔상 (3인)",
+    name: "전갈비 나눔상 3인(대왕꽃전골2 + 떡갈비스테이크2 )",
     category: "추천 세트",
     price: 58000,
     servingSize: "(3인분)",
-    isPopular: false,
-    desc: "진한 소고기햄 대왕전골에 수제 떡갈비 2개를 더해 3인이 든든하게! 고기 풍미를 꼭 잡은 프리미엄 세트입니다.",
-    image: "/images/gorae_budaejjigae.jpg",
+    isPopular: true,
+    badgeText: "인기 히트",
+    desc: "진한 소고기햄 대왕꽃전골 2인에 수제 떡갈비스테이크 2개를 더해 3인이 든든하게! 고기 풍미를 꼭 잡은 프리미엄 세트입니다.",
+    image: "/images/jeongalbi_nanumsang_3p.png",
     spicyLevel: 2,
-    ingredients: ["소고기햄 대왕전골 2인", "수제 떡갈비스테이크 2개"]
+    ingredients: ["소고기햄 대왕꽃전골 2인", "수제 떡갈비스테이크 2개", "라면사리·밥 무한"]
   },
   {
     id: 107,
