@@ -274,7 +274,7 @@ export const MENU_ITEMS = [
     servingSize: "(어린이용)",
     isPopular: false,
     desc: "아이들이 가장 좋아해요! 매운 부대찌개를 못 먹는 우리 아이들을 위한 든든한 한 끼! (김가루에 쓱쓱 비벼주세요)",
-    image: "/images/hero.png",
+    image: "/images/kids_meal_set.png",
     spicyLevel: 0,
     ingredients: ["계란후라이", "바삭 김가루", "고소한 흰쌀밥"]
   },
