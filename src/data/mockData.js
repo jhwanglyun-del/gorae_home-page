@@ -144,7 +144,7 @@ export const MENU_ITEMS = [
     servingSize: "(1인분)",
     isPopular: false,
     desc: "가볍게 드시기 좋은 실속형 메뉴입니다. (풍성한 햄과 베이컨, 물만두 등 화려한 토핑을 원하시면 정통꽃부대찌개를 추천합니다!)",
-    image: "/images/hero.png",
+    image: "/images/gorae_budaejjigae_basic.png",
     spicyLevel: 2,
     ingredients: ["수제 클래식햄", "대파", "팽이버섯", "숙성 김치", "특제육수"]
   },
