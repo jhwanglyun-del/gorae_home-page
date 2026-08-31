@@ -243,7 +243,7 @@ export const MENU_ITEMS = [
   // 5. 사이드 별미 (고래의 별미)
   {
     id: 4,
-    name: "육즙떡갈비스테이크",
+    name: "수제떡갈비스테이크",
     category: "사이드 별미",
     price: 10000,
     servingSize: "(1인분)",
@@ -255,29 +255,16 @@ export const MENU_ITEMS = [
     ingredients: ["100% 국산 수제 떡갈비", "계란후라이", "그릴 파프리카", "특제 데리야끼 소스"]
   },
   {
-    id: 501,
-    name: "고래보양락족 (2~3인분)",
-    category: "사이드 별미",
-    price: 50000,
-    servingSize: "(2~3인분)",
-    isPopular: true,
-    badgeText: "인기 히트",
-    desc: "[조리시간 40분 소요] 겉바속촉의 진수! 학생은 굽는 시간이 걸리니 꼭 미리 주문해 주세요!",
-    image: "/images/ham_artisan.jpg",
-    spicyLevel: 0,
-    ingredients: ["프리미엄 락족 1족", "특제 바베큐 소스", "파채·무쌈"]
-  },
-  {
     id: 502,
-    name: "고래 그린부어스트 스테이크",
+    name: "고래그릴부어스트 스테이크",
     category: "사이드 별미",
     price: 6500,
     servingSize: "(1인분)",
     isPopular: false,
-    desc: "고래가 직접 만든 수제 소시지를 노릇하게 구워낸 프리미엄 사이드 메뉴입니다. 겉은 바삭하고 속은 촉촉한 그린부어스트에 머스터드의 산뜻한 풍미를 더해 부대찌개와 함께 곁들이기 좋은 고래더담음 별미입니다.",
-    image: "/images/ham.png",
+    desc: "고래가 직접 만든 수제 소시지를 노릇하게 구워낸 프리미엄 사이드 메뉴입니다. 겉은 바삭하고 속은 촉촉한 그릴부어스트에 머스터드의 산뜻한 풍미를 더해 부대찌개와 함께 곁들이기 좋은 고래더담음 별미입니다.",
+    image: "/images/grill_bratwurst.png",
     spicyLevel: 0,
-    ingredients: ["수제 그린부어스트 소세지", "특제 머스터드 소스"]
+    ingredients: ["수제 그릴부어스트 소세지", "특제 머스터드 소스", "로즈마리 가니쉬"]
   },
   {
     id: 503,
