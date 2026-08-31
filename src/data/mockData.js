@@ -132,7 +132,7 @@ export const MENU_ITEMS = [
     servingSize: "(1인분)",
     isPopular: false,
     desc: "숙성 흑마늘이 품은 깊고 진한 국물! 지친 몸에 활력을 채워주는 든든한 보양 별미입니다.",
-    image: "/images/hero.png",
+    image: "/images/black_garlic_budaejjigae.png",
     spicyLevel: 2,
     ingredients: ["숙성 흑마늘", "수제 꽃햄", "국산 돈육 소세지", "버섯 특제육수"]
   },
