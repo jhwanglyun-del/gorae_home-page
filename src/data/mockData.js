@@ -107,7 +107,7 @@ export const MENU_ITEMS = [
     isPopular: true,
     badgeText: "베스트 대표메뉴",
     desc: "처음 오셨다면 무조건 이거! 단골들이 항상 찾는 고래의 진짜 기본(시그니처)입니다.",
-    image: "/images/hero.png",
+    image: "/images/gorae_signature_flower.png",
     spicyLevel: 2,
     ingredients: ["수제 꽃햄", "수제 수제비햄", "국산 돈육 소세지", "특제 다대기", "버섯 특제육수", "치즈"]
   },
@@ -157,7 +157,7 @@ export const MENU_ITEMS = [
     isPopular: true,
     badgeText: "인기 히트",
     desc: "일반 햄이 아닙니다! 귀한 [소고기햄]을 빈틈없이 가득 채운 압도적인 프리미엄 전골! (가족 모임, 단체 회식에 가장 완벽하고 푸짐한 선택입니다)",
-    image: "/images/gorae_budaejjigae.jpg",
+    image: "/images/gorae_beef_daewang_jeongol.png",
     spicyLevel: 2,
     ingredients: ["귀한 소고기햄", "수제 꽃햄", "동충하초", "흑마늘", "상황버섯·표고버섯", "특제 명품육수"]
   },
@@ -169,7 +169,7 @@ export const MENU_ITEMS = [
     servingSize: "(3인분)",
     isPopular: false,
     desc: "고래가 가장 자신 있게 내놓는 편안함! 진한 육수와 소고기햄의 미친 풍미를 경험해 보세요. (3인이 고기로 배를 채울 수 있는 넉넉한 양입니다)",
-    image: "/images/gorae_budaejjigae.jpg",
+    image: "/images/gorae_beef_daewang_jeongol.png",
     spicyLevel: 2,
     ingredients: ["귀한 소고기햄", "수제 꽃햄", "동충하초", "흑마늘", "상황버섯·표고버섯"]
   },
@@ -181,7 +181,7 @@ export const MENU_ITEMS = [
     servingSize: "(2인분)",
     isPopular: false,
     desc: "수제 소고기햄을 아낌없이 듬뿍! 두 분이서 오붓하고 특별하게 즐기는 최고급 전골입니다.",
-    image: "/images/gorae_budaejjigae.jpg",
+    image: "/images/gorae_beef_daewang_jeongol.png",
     spicyLevel: 2,
     ingredients: ["귀한 소고기햄", "수제 꽃햄", "상황버섯·표고버섯", "특제 명품육수"]
   },
@@ -406,9 +406,110 @@ export const MENU_ITEMS = [
     category: "추가 사리",
     price: 1000,
     desc: "진한 부대찌개 국물에 밥과 함께 쓱쓱 비벼 먹을 때 절대 빠질 수 없는 필수템!",
-    image: "/images/hero.png",
+    image: "/images/sari_fried_egg.png",
     spicyLevel: 0,
     ingredients: ["계란후라이 1개"]
+  },
+
+  // 7. 음료 및 주류
+  {
+    id: 701,
+    name: "코카콜라 (355ml)",
+    category: "음료 및 주류",
+    price: 2000,
+    desc: "얼큰하고 진한 부대찌개와 환상 궁합! 톡 쏘는 청량감의 오리지널 코카콜라",
+    image: "/images/beverage_coke.png",
+    spicyLevel: 0
+  },
+  {
+    id: 702,
+    name: "코카콜라 제로 (355ml)",
+    category: "음료 및 주류",
+    price: 2000,
+    desc: "부담 없는 칼로리로 가볍고 깔끔하게 즐기는 제로 코카콜라",
+    image: "/images/beverage_coke_zero.png",
+    spicyLevel: 0
+  },
+  {
+    id: 703,
+    name: "칠성사이다 (355ml)",
+    category: "음료 및 주류",
+    price: 2000,
+    desc: "맑고 깨끗한 맛! 식사 후 입안을 상쾌하게 정돈해 주는 칠성사이다",
+    image: "/images/beverage_chilsung.png",
+    spicyLevel: 0
+  },
+  {
+    id: 704,
+    name: "환타 파인애플 (355ml)",
+    category: "음료 및 주류",
+    price: 2000,
+    desc: "달콤 상큼한 파인애플 향이 매력적인 인기 탄산음료",
+    image: "/images/beverage_fanta.png",
+    spicyLevel: 0
+  },
+  {
+    id: 705,
+    name: "씨그램 탄산수 (355ml)",
+    category: "음료 및 주류",
+    price: 2000,
+    desc: "당류 걱정 없이 깨끗하고 강렬한 탄산의 청량감",
+    image: "/images/beverage_sparkling.png",
+    spicyLevel: 0
+  },
+  {
+    id: 801,
+    name: "참이슬 후레쉬",
+    category: "음료 및 주류",
+    price: 5000,
+    desc: "깨끗하고 부드러운 대한민국 대표 소주",
+    image: "/images/liquor_chamisul.png",
+    spicyLevel: 0
+  },
+  {
+    id: 802,
+    name: "진로 이즈 백",
+    category: "음료 및 주류",
+    price: 5000,
+    desc: "초깔끔한 맛과 부드러운 목넘김의 원조 소주",
+    image: "/images/liquor_jinro.png",
+    spicyLevel: 0
+  },
+  {
+    id: 803,
+    name: "처음처럼",
+    category: "음료 및 주류",
+    price: 5000,
+    desc: "대관령 기슭 암반수로 만들어 부드러운 소주",
+    image: "/images/liquor_chumchurum.png",
+    spicyLevel: 0
+  },
+  {
+    id: 804,
+    name: "시원한 청풍 (C1)",
+    category: "음료 및 주류",
+    price: 5000,
+    desc: "충북 청주 지역의 맑고 깨끗한 시원 소주",
+    image: "/images/liquor_c1.png",
+    spicyLevel: 0
+  },
+  {
+    id: 805,
+    name: "카스 프레시 (Cass)",
+    category: "음료 및 주류",
+    price: 5000,
+    desc: "생맥주의 신선함과 극강의 청량감을 자랑하는 국민 맥주",
+    image: "/images/liquor_cass.png",
+    spicyLevel: 0
+  },
+  {
+    id: 806,
+    name: "테라 (Terra)",
+    category: "음료 및 주류",
+    price: 5000,
+    desc: "청정 라거 100% 리얼 탄산의 시원한 맥주",
+    image: "/images/liquor_terra.png",
+    spicyLevel: 0
   }
 
 

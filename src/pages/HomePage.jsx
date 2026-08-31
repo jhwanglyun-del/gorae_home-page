@@ -7,7 +7,7 @@ import {
   ChevronDown, ChevronUp
 } from 'lucide-react';
 
-const CATEGORIES = ['전체', '추천 세트', '부대전골/단품', '소불고기', '포장 이벤트', '사이드 별미', '추가 사리'];
+const CATEGORIES = ['전체', '추천 세트', '부대전골/단품', '소불고기', '포장 이벤트', '사이드 별미', '추가 사리', '음료 및 주류'];
 
 // Helper for today's ISO date string (YYYY-MM-DD)
 const getTodayDate = () => {

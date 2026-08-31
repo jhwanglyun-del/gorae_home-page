@@ -24,22 +24,22 @@
   - 상단 카테고리 탭 변경 시 자동으로 9개 기본 상태로 리셋.
   - 데스크탑에서는 정갈한 3열 배치, 태블릿 2열, 모바일 1열로 반응형 최적화(`.menu-grid`).
 
-### 📸 3) 꽃갈비 & 전갈비 및 시그니처 단품·사이드·사리(전체)·이벤트 메뉴 대표 이미지 실물 상차림 사진으로 세분화 교체
+### 📸 3) 시그니처 대표 메뉴 및 사리·음료·주류 전 품목 실물 사진 100% 구축 완료
 - **개선 사항**:
-  - **`추가 사리 전 품목 실물 사진 매핑 완료`**:
-    - `명품 소고기햄 사리`: `public/images/sari_beef_ham.png`
-    - `고래보양 버섯모듬사리`: `public/images/sari_mushroom.png`
-    - `귀한 동충하초 사리`: `public/images/sari_dongchunghacho.jpg`
-    - `모듬 사리 (햄+소시지)`: `public/images/sari_assorted.png`
-    - `시그니처 꽃베이컨`: `public/images/sari_bacon.png`
-    - `수제 햄 추가`: `public/images/sari_ham.png`
-    - `수제 소시지 추가`: `public/images/sari_sausage.png`
-    - `알찬 물만두 (15개)`: `public/images/sari_dumpling.png`
-    - `버섯 (표고, 느타리)`: `public/images/sari_mushroom.png`
-    - `쫄깃 당면`: `public/images/sari_glass_noodle.png`
-    - `쫀득한 떡`: `public/images/sari_rice_cake.png`
-    - `고소한 치즈`: `public/images/sari_cheese.png`
-  - **`어린이 든든세트 (계란+김가루+밥)`**: 원목 트레이 위에 계란후라이 밥공기와 수저가 정갈하게 담긴 **어린이 든든세트 전용 실물 사진**(`public/images/kids_meal_set.png`)으로 교체 완료.
+  - **시그니처 본상 메뉴**:
+    - `고래정통 꽃부대찌개`: `public/images/gorae_signature_flower.png` (정통 꽃부대찌개 실물)
+    - `고래 소고기햄 대왕꽃전골 (4인/3인/2인)`: `public/images/gorae_beef_daewang_jeongol.png` (소고기햄 대왕전골 실물)
+    - `고래 동충하초 꽃부대찌개`: `public/images/dongchunghacho_budaejjigae.png`
+    - `고래 흑마늘 꽃부대찌개`: `public/images/black_garlic_budaejjigae.png`
+    - `고래부대찌개 (실속형)`: `public/images/gorae_budaejjigae_basic.png`
+  - **음료 및 주류 (11종)**:
+    - 코카콜라, 코카콜라 제로, 칠성사이다, 환타 파인애플, 씨그램 탄산수
+    - 참이슬 후레쉬, 진로 이즈 백, 처음처럼, 시원한 청풍(C1), 카스 프레시, 테라
+  - **추가 사리 전 품목 (13종)**:
+    - 명품 소고기햄, 버섯모듬, 동충하초, 모듬사리, 시그니처 꽃베이컨, 수제 햄, 수제 소시지, 알찬 물만두, 버섯, 당면, 떡, 치즈, 계란후라이
+  - **사이드 별미**: 수제떡갈비스테이크, 고래그릴부어스트 스테이크, 어린이 든든세트
+  - **추천 세트**: 전갈비 한상, 실속 꽃갈비 나눔상, 꽃갈비 동행상, 꽃갈비 한상, 전갈비 나눔상(3인), 전갈비 동행상(2인)
+  - **포장 이벤트**: [포장] 꽃부대 2+1 (채널추가)
   - **`수제떡갈비스테이크`**: 메뉴명을 기존 `육즙떡갈비스테이크`에서 직관적인 **`수제떡갈비스테이크`**로 통일 변경.
   - **`고래보양락족 (2~3인분)`**: 품절/미운영에 따라 사이드 별미 메뉴판에서 **완전 삭제** 처리.
   - **`고래그릴부어스트 스테이크`**: 메뉴명을 `고래그릴부어스트 스테이크`로 정돈하고, 프리미엄 검은 접시에 노릇하게 구워진 수제 소시지와 머스터드 소스, 로즈마리가 담긴 **전용 실물 사진**(`public/images/grill_bratwurst.png`)으로 교체 완료.
