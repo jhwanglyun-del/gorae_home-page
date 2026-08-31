@@ -91,10 +91,10 @@ export const MENU_ITEMS = [
     price: 48000,
     servingSize: "(2인분)",
     isPopular: false,
-    desc: "최고급 소고기햄 대왕전골에 육즙 가득 떡갈비까지! 두 분이서 오붓하고 특별하게 즐기는 2인 세트입니다.",
-    image: "/images/gorae_budaejjigae.jpg",
+    desc: "최고급 소고기햄 대왕꽃전골 2인에 육즙 가득 수제 떡갈비까지! 두 분이서 오붓하고 특별하게 즐기는 2인 세트입니다.",
+    image: "/images/jeongalbi_donghaeng_2p.png",
     spicyLevel: 2,
-    ingredients: ["소고기햄 대왕전골 2인", "수제 떡갈비스테이크 1개"]
+    ingredients: ["소고기햄 대왕꽃전골 2인", "수제 떡갈비스테이크 1개", "라면사리·밥 무한"]
   },
 
   // 2. 부대전골/단품 (고래의 본상)
