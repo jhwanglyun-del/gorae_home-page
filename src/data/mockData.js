@@ -4,6 +4,7 @@ export const BRAND_INFO = {
   name: "수제햄 고래부대찌개",
   tagline: "100% 무방부제 국산 돼지고기로 직접 만드는 명품 부대찌개",
   naverPlaceUrl: "https://naver.me/FNmGfZuO",
+  smartStoreUrl: "https://naver.me/GII2q8lx",
   phone: "0507-1496-0148",
 
   address: "충북 청주시 청원구 오창읍 중심상업2로 13 (수제햄 고래부대찌개 오창본점)",

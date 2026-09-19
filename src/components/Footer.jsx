@@ -115,9 +115,12 @@ export default function Footer() {
           <div>
             © 2026 수제햄 고래부대찌개. All rights reserved. 본 사이트는 공식 브랜드 홈페이지입니다.
           </div>
-          <div style={{ display: 'flex', gap: '1rem' }}>
+          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
             <a href={BRAND_INFO.naverPlaceUrl} target="_blank" rel="noreferrer" style={{ color: '#A09385', textDecoration: 'underline' }}>
               네이버 스마트플레이스
+            </a>
+            <a href={BRAND_INFO.smartStoreUrl} target="_blank" rel="noreferrer" style={{ color: '#A09385', textDecoration: 'underline' }}>
+              고래 수제햄, 밀키트 주문
             </a>
           </div>
         </div>
