@@ -4,10 +4,10 @@ import MenuDetailModal from '../components/MenuDetailModal';
 import { 
   Sparkles, ExternalLink, Calendar, Clock, MapPin, 
   ChevronRight, Star, CheckCircle2, Utensils, Award, Users, PhoneCall,
-  ChevronDown, ChevronUp
+  ChevronDown, ChevronUp, ShoppingBag
 } from 'lucide-react';
 
-const CATEGORIES = ['전체', '추천 세트', '부대전골/단품', '소불고기', '포장 이벤트', '사이드 별미', '추가 사리'];
+const CATEGORIES = ['전체', '추천 세트', '부대전골/단품', '소불고기', '포장 이벤트', '사이드 별미', '추가 사리', '음료 및 주류'];
 
 // Helper for today's ISO date string (YYYY-MM-DD)
 const getTodayDate = () => {
@@ -332,11 +332,13 @@ export default function HomePage({ onOpenAuth }) {
 
 
             <div style={{ padding: '2.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-              <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--brand-dark)', marginBottom: '1rem' }}>
-                손끝에서 완성되는 명품 수제햄
+              <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--brand-dark)', marginBottom: '1rem', wordBreak: 'keep-all' }}>
+                내 딸에게 먹일 햄을 만든다는 마음으로
               </h3>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.7', marginBottom: '1.5rem' }}>
-                저희 고래부대찌개는 기계식 대량 생산 햄을 거부합니다. 장인의 꼼꼼한 저온 숙성과 참나무 훈연 과정을 통해 만들어낸 오리지널 참맛을 느껴보세요.
+              <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.8', marginBottom: '1.5rem', wordBreak: 'keep-all' }}>
+                재료를 고르고, 직접 배합하고, 천천히 숙성해요.<br />
+                불필요한 것은 덜어내고 고기 본연의 맛은 살려<br />
+                고래부대찌개만의 수제햄을 직접 만듭니다.
               </p>
               <button
                 onClick={() => onOpenAuth('signup')}
@@ -403,11 +405,16 @@ export default function HomePage({ onOpenAuth }) {
                 }}
                 onClick={() => setSelectedMenu(item)}
               >
-                <div style={{ position: 'relative', height: '180px', backgroundColor: '#F4ECE1' }}>
+                <div style={{ position: 'relative', height: '180px', backgroundColor: '#F4ECE1', overflow: 'hidden' }}>
                   <img
                     src={item.image}
                     alt={item.name}
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    style={{ 
+                      width: '100%', 
+                      height: '100%', 
+                      objectFit: item.category === '음료 및 주류' ? 'contain' : 'cover',
+                      padding: item.category === '음료 및 주류' ? '0.75rem' : '0'
+                    }}
                   />
                   {item.isPopular && (
                     <span style={{
@@ -552,7 +559,7 @@ export default function HomePage({ onOpenAuth }) {
                 border: '1px solid var(--border-medium)',
                 boxShadow: 'var(--shadow-sm)'
               }}>
-                <img src="/images/interior.png" alt="고래부대찌개 매장 내부" style={{ width: '100%', height: '220px', objectFit: 'cover' }} />
+                <img src="/images/interior.jpg" alt="수제햄 고래부대찌개 오창본점 매장 내부" style={{ width: '100%', height: '240px', objectFit: 'cover', objectPosition: 'center' }} />
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', fontSize: '0.925rem' }}>
@@ -577,8 +584,8 @@ export default function HomePage({ onOpenAuth }) {
 
               </div>
 
-              {/* Naver Place Direct Button */}
-              <div style={{ marginTop: '1.75rem' }}>
+              {/* External Links: Naver Place & SmartStore */}
+              <div style={{ marginTop: '1.75rem', display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
                 <a
                   href={BRAND_INFO.naverPlaceUrl}
                   target="_blank"
@@ -587,16 +594,40 @@ export default function HomePage({ onOpenAuth }) {
                   style={{
                     backgroundColor: '#03C75A',
                     color: '#FFFFFF',
-                    padding: '0.75rem 1.4rem',
+                    padding: '0.75rem 1.3rem',
                     borderRadius: '10px',
                     fontWeight: 700,
-                    fontSize: '0.95rem',
+                    fontSize: '0.925rem',
                     display: 'inline-flex',
                     alignItems: 'center',
-                    gap: '0.5rem'
+                    gap: '0.5rem',
+                    boxShadow: '0 2px 8px rgba(3, 199, 90, 0.2)'
                   }}
                 >
                   <span>네이버 스마트플레이스 예약/길찾기</span>
+                  <ExternalLink size={16} />
+                </a>
+
+                <a
+                  href={BRAND_INFO.smartStoreUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn"
+                  style={{
+                    backgroundColor: '#FF585D',
+                    color: '#FFFFFF',
+                    padding: '0.75rem 1.3rem',
+                    borderRadius: '10px',
+                    fontWeight: 700,
+                    fontSize: '0.925rem',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    boxShadow: '0 2px 8px rgba(255, 88, 93, 0.25)'
+                  }}
+                >
+                  <ShoppingBag size={16} />
+                  <span>고래 수제햄, 밀키트 주문</span>
                   <ExternalLink size={16} />
                 </a>
               </div>
